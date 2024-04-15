@@ -1,6 +1,7 @@
+
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family:"Driod Serif" ;
 }
 
 body {
@@ -24,8 +25,10 @@ body {
 }
 
 .header .text {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
+  color: #e8ecee;
+  font-family: "Driod Serif";
 }
 
 .form {

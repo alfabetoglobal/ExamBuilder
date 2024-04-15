@@ -3,6 +3,9 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import './Register.css';
+import PhoneInput from 'react-phone-number-input'; 
+import 'react-phone-number-input/style.css';
+
 
 const Registration = () => {
     // eslint-disable-next-line
@@ -18,13 +21,7 @@ const Registration = () => {
 
     const contactInfoValidationSchema = Yup.object({
         email: Yup.string().email('Invalid email address').required('Email is required'),
-        password: Yup.string()
-        .required('Password is required')
-        .matches(
-            /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/,
-            'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number'
-        ),
-        phoneNumber: Yup.string().matches(/^[0-9]{10}$/, 'Invalid phone number').required('Mobile Number is required'),
+        phoneNumber: Yup.string().matches(/^[0-9]{10}$/, 'Invalid phone number').required('Phone Number is required'),
         address: Yup.string().required('Address is required'),
         pincode: Yup.string().matches(/^[0-9]{6}$/, 'Invalid pincode').required('Pincode is required'),
     });
@@ -58,21 +55,21 @@ const Registration = () => {
                 Role: values.Role,
                 experience: values.experience,
                 address: values.address,
-                password: values.password,
                 Identity: values.identity,
-                Active: true,
+                Active: false,
             };
 
             const requestBody = {
                 body: JSON.stringify(formData)
             };
-
-            const response = await axios.post(' https://f3c71ors2e.execute-api.us-east-1.amazonaws.com/user/register', requestBody);
+             console.log(requestBody);
+            const response = await axios.post('https://f3c71ors2e.execute-api.us-east-1.amazonaws.com/user/register', requestBody);
             console.log(response.data); 
             setSubmitting(false);
             
         } catch (error) {
             console.error('Registration failed:', error);
+    
             setSubmitting(false);
         }
     };
@@ -89,16 +86,6 @@ const Registration = () => {
         <div className='container'>
             <div className="header">
                 <div className="text">Register</div>
-                <div className="input ">
-            <form className="form">
-                             <label for="chk" aria-hidden="true">Apply as</label>
-                              <select class="input" name="applyAs" required>
-                                 <option value="" disabled selected hidden>Select an option</option> 
-                                 <option value="teacher">Teacher</option>
-                                  <option value="student">Student</option>
-                                 </select>
-                                </form>
-                                </div>
             </div>
             <Formik
                 initialValues={{
@@ -118,10 +105,20 @@ const Registration = () => {
                     pincode: '',
                     password: '', 
                 }}
-                validationSchema={step === 1 ? basicDetailsValidationSchema :
-                    step === 2 ? contactInfoValidationSchema :
-                    step === 3 ? instituteDetailsValidationSchema :
-                    identityValidationSchema}
+                validationSchema={(values) => {
+                    switch (step) {
+                        case 1:
+                            return basicDetailsValidationSchema;
+                        case 2:
+                            return contactInfoValidationSchema;
+                        case 3:
+                            return instituteDetailsValidationSchema;
+                        case 4:
+                            return identityValidationSchema;
+                        default:
+                            return Yup.object({});
+                    }
+                }}
                 onSubmit={handleSubmit}
             >
                 {formik => (
@@ -168,18 +165,23 @@ const Registration = () => {
                                         <div className="error-popup">{formik.errors.email}</div>
                                     ) : null}
                                 </div>
-                                <div className="input">
-                                 <Field type="text" autoComplete="off" name="password" placeholder="Password" />
-                                {formik.touched.password && formik.errors.password ? (
-                               <div className="error-popup">{formik.errors.password}</div>
-                               ) : null}
-                                 </div>
-                                <div className="input">
-                                    <Field type="number" autoComplete="off" name="phoneNumber" placeholder="Phone Number (with country code)" />
-                                    {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-                                     <div className="error-popup">{formik.errors.phoneNumber}</div>
-                                    ) : null}       
-                                </div>
+                                 <div className="input">
+                                <PhoneInput
+                                 autoComplete="off"
+                                 country="IN"
+                                  name="phoneNumber"
+                                   placeholder="Phone Number"
+                                   inputprops={{
+                                    required:true,
+                                   }}
+                                      value={formik.values.phoneNumber}
+                                      onChange={value => formik.setFieldValue('phoneNumber', value)}
+                                       onBlur={formik.handleBlur('phoneNumber')}
+                                      />
+                                          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                                          <div className="error-popup">{formik.errors.phoneNumber}</div>
+                                    )}
+                                     </div>
                                 <div className="input">
                                     <Field type="text" autoComplete="off" name="address" placeholder="Address" />
                                     {formik.touched.address && formik.errors.address ? (
@@ -251,18 +253,20 @@ const Registration = () => {
                             </>
                         )}
                         <div className="button-group">
-                            {step > 1 && (
-                                <button type="button" className="btn btn-warning" onClick={handlePrevious}>Previous</button>
-                            )}
-                            {step < 4 && (
-                                <button type="button" className="btn btn-success" onClick={handleNext}>Next</button>
-                            )}
-                            {step === 4 && (
-                                <button type="submit" className="btn btn-success" disabled={!formik.isValid || formik.isSubmitting}>
-                                    {formik.isSubmitting ? 'Registering...' : 'Register'}
-                                </button>
-                            )}
-                        </div>
+                          {step > 1 && (
+                          <button type="button" className="btn btn-warning" onClick={handlePrevious}>Previous</button>
+                          )}
+                        {step < 4 && (
+                        <button type="button" className="btn btn-success" onClick={handleNext} disabled={!formik.isValid}>
+                        Next
+                        </button>
+                         )}
+                        {step === 4 && (
+                       <button type="submit" className="btn btn-success" disabled={!formik.isValid || formik.isSubmitting}>
+                        {formik.isSubmitting ? 'Registering...' : 'Register'}
+                        </button>
+                         )}
+                      </div>
                     </Form>
                 )}
             </Formik>
