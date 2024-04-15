@@ -21,7 +21,7 @@ const Registration = () => {
 
     const contactInfoValidationSchema = Yup.object({
         email: Yup.string().email('Invalid email address').required('Email is required'),
-        phoneNumber: Yup.string().matches(/^[0-9]{10}$/, 'Invalid phone number').required('Phone Number is required'),
+        phoneNumber: Yup.string().matches(/^[0-9]{12}$/, 'Invalid phone number').required('Phone Number is required'),
         address: Yup.string().required('Address is required'),
         pincode: Yup.string().matches(/^[0-9]{6}$/, 'Invalid pincode').required('Pincode is required'),
     });
