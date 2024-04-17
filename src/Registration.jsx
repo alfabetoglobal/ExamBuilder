@@ -6,6 +6,7 @@ import './Register.css';
 
 const Registration = () => {
     // eslint-disable-next-line
+    
     const fileRef = useRef(null);
     const [step, setStep] = useState(1);
 
