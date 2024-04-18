@@ -1,36 +1,46 @@
 .Apply {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    font-family:"Driod Serif" ;
-  }
-  
-  .Apply h1 {
-    font-size: 70px;
-    margin-bottom: 30px;
-    color: #007bc1;
-    font-family: "Driod Serif";
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .Apply input[type="radio"] {
-    margin-right: 10px;
-    font-family: "Driod Serif";
-    font-size: 70px;
-    font-weight: 400;
-    
-  }
-  
-  .Apply p {
-    font-size: 30px;
-    margin: 20px 0;
-    color: #007bc1
-  }
-  
-  .Apply a {
-    text-decoration: none;
-   /* color: #007bff;*/
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Georgia Serif";
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add optimized transition properties */
+}
+
+.Apply.hide {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.Apply h1 {
+  font-size: 100px;
+  margin-bottom: 30px;
+  color: #007bc1;
+  font-weight: 400;
+}
+
+.apply-select {
+  font-size: 16px;
+  padding: 8px;
+  border: 2px solid #007bc1;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #007bc1;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.Apply p {
+  font-size: 30px;
+  margin: 20px 0;
+  color: #007bc1;
+}
+
+.apply-options {
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add optimized transition properties */
+}
+
+.apply-options.hide {
+  transform: translateY(-50px);
+  opacity: 0;
+}

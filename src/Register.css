@@ -1,7 +1,7 @@
 
 * {
   box-sizing: border-box;
-  font-family:"Driod Serif" ;
+  font-family:"Georgia Serif" ;
 }
 
 body {
@@ -16,7 +16,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 5% auto;
   padding: 30px;
-  width: 50%;
+  width: 400px;
 }
 
 .header {
@@ -25,10 +25,12 @@ body {
 }
 
 .header .text {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #e8ecee;
-  font-family: "Driod Serif";
+  font-family: "Georgia Serif";
+  font-weight: 400;
+  font-style: normal;
 }
 
 .form {
@@ -41,6 +43,9 @@ body {
   margin-bottom: 20px;
 }
 
+.input h2{
+  color: #fff;
+}
 .input input,
 .input select {
   border: 1px solid #ccc;
@@ -52,18 +57,17 @@ body {
 .input input:focus,
 .input select:focus {
   outline: none;
-  border-color:#278cc6;
+  border-color:#000609;
 }
 
 .error-popup {
-  background-color: #f44336;
-  border-radius: 5px;
-  color: white;
-  padding: 10px;
+  color:  #f44336;
+  padding: 5px;
   margin-top: 5px;
 }
 
-.button-group {
+/*.button-group {
+  cursor: default;
   display: flex;
   justify-content: space-between;
 }
@@ -75,6 +79,25 @@ body {
   color: white;
   padding: 10px;
   width: 48%;
+}
+
+.button-group button:hover {
+  background-color: #49ade7;
+}*/
+.button-group {
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; 
+}
+
+.button-group button {
+  background-color:  #49ade7;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  width: 30%; 
 }
 
 .button-group button:hover {
@@ -93,7 +116,6 @@ body {
 .slider {
   overflow-y: hidden;
   max-height: 0; 
-
   transition-property: max-height;
   transition-duration: 0.5s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
