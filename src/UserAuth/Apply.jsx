@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Registration from './Registration'; 
 import { Link } from 'react-router-dom';
-import './Apply.css';
+import '../css/Apply.css';
 
 function Apply() {
   const [role, setRole] = useState('');

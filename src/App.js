@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Apply from './Apply';
-import Registration from './Registration'; 
-import Login from './Components/Login/Login';
+import Apply from './UserAuth/Apply';
+import Registration from './UserAuth/Registration'; 
+import Login from './UserAuth/Login';
 
 function App() {
   return (
