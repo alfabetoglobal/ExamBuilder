@@ -4,19 +4,19 @@
   justify-content: center;
   align-items: center;
   font-family: "Georgia Serif";
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Add optimized transition properties */
-}
-
-.Apply.hide {
-  transform: translateY(-50px);
-  opacity: 0;
 }
 
 .Apply h1 {
-  font-size: 100px;
+  font-size: 70px;
   margin-bottom: 30px;
   color: #007bc1;
   font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.hide-heading {
+  transform: translateY(-50px);
+  opacity: 0;
 }
 
 .apply-select {
@@ -30,14 +30,8 @@
   margin-bottom: 20px;
 }
 
-.Apply p {
-  font-size: 30px;
-  margin: 20px 0;
-  color: #007bc1;
-}
-
 .apply-options {
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Add optimized transition properties */
+  transition: transform 0.3s ease, opacity 0.3s ease; 
 }
 
 .apply-options.hide {

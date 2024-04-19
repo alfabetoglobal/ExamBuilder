@@ -13,7 +13,7 @@ function Apply() {
 
   return (
     <div className="Apply">
-      <h1 className={showRegistration ? 'hide' : ''}>Apply as</h1>
+      <h1 className={showRegistration ? 'hide-heading' : ''}>Apply as</h1>
       <div className={`apply-options ${showRegistration ? 'hide' : ''}`}>
         <select
           className={`apply-select ${showRegistration ? 'hide' : ''}`}

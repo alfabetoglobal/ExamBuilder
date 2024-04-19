@@ -22,7 +22,8 @@ const Registration = ({ selectedRole }) => {
     const contactInfoValidationSchema = Yup.object({
         email: Yup.string().email('Invalid email address').required('Email is required'),
         phoneNumber: Yup.string()
-        .required('Phone Number is required'),
+         .matches(/^\+\d{1,3}\d{10}$/, 'Phone number must be in the format "+[Country Code][Phone Number]"')
+         .required('Phone Number is required'),
         address: Yup.string().required('Address is required'),
         PinCode: Yup.string().matches(/^[0-9]{6}$/, 'Invalid pincode').required('Pincode is required'),
     });
@@ -56,7 +57,7 @@ const Registration = ({ selectedRole }) => {
                 experience: values.experience,
                 address: values.address,
                 Identity: values.identity,
-                Active: false,
+                Active: 'false',
             };
 
             const requestBody = {
@@ -98,7 +99,7 @@ const Registration = ({ selectedRole }) => {
                     DOB: '',
                     gender: '',
                     email: '',
-                    phoneNumber: '',
+                    phoneNumber: '', 
                     Role:'selectedRole',
                     address: '',
                     instituteName: '',
