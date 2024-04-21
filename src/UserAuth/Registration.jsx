@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import './Register.css';
+import '../css/Register.css';
 import PhoneInput from 'react-phone-number-input'; 
 import 'react-phone-number-input/style.css';
 
@@ -66,7 +66,7 @@ const Registration = ({ selectedRole }) => {
                 instituteAddress: `${values.flatNo}, ${values.city}, ${values.country}`,
                 Role: selectedRole,
                 experience: values.experience,
-                address: `${values.flatNo}, ${values.city}, ${values.country}`,
+                address:` ${values.flatNo}, ${values.city}, ${values.country}`,
                 Identity: values.identity,
                 IdentityType: values.identityType,
                 Active: 'false',

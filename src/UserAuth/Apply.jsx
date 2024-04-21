@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Registration from './Registration';
-import './Apply.css';
+import '../css/Apply.css';
 
 function Apply() {
   const [role, setRole] = useState('');
