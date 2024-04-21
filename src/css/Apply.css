@@ -5,13 +5,17 @@
   align-items: center;
   font-family: "Georgia Serif";
   background-image: url('../Assets/background.png');
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .Apply h1 {
-  font-size: 70px;
+  font-size: 100px;
   margin-bottom: 30px;
   color: #007bc1;
   font-weight: 400;
+  text-align: center;
+  margin-top: 0;
   transition: transform 0.3s ease;
 }
 
