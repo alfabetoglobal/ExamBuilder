@@ -7,7 +7,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 const Registration = ({ selectedRole }) => {
-    // eslint-disable-next-line
+     // eslint-disable-next-line
     const fileRef = useRef(null);
     const [step, setStep] = useState(1);
     const [phoneNumber, setPhoneNumber] = useState('');

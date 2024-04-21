@@ -18,8 +18,7 @@ function Apply() {
         <select
           className={`apply-select ${showRegistration ? 'hide' : ''}`}
           value={role}
-          onChange={handleOptionChange}
-        >
+          onChange={handleOptionChange}>
           <option value="">Select Role</option>
           <option value="Student">Student</option>
           <option value="Teacher">Teacher</option>
