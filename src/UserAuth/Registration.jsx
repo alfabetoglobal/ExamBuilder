@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import './Register.css';
+import '../css/Register.css';
 import PhoneInput from 'react-phone-number-input'; 
 import 'react-phone-number-input/style.css';
 

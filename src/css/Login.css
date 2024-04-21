@@ -1,0 +1,146 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #88abe4, #5199e1, #0790f9);
+  }
+    
+    .wrapper {
+      width: 400px;
+      height: 350px; /* Updated height */
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      background-color: #0790f9;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+    .wrapper form input {
+      margin-bottom: 5px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 35px;
+    }
+    
+    input[type="email"],
+    input[type="password"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0px;
+    }
+    
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    a {
+      color: #011223;
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    
+    button[type="submit"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #082c52;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #0e5198;
+    }
+    .password-input {
+      position: relative;
+    }
+    
+    .password-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+    .password-input {
+      position: relative;
+    }
+    
+    .show-password-eye {
+      position: fixed;
+      right: 30px;
+      top: 52%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      z-index: 1;
+    }
+    
+    .show-password-eye.show {
+      transform: rotate(180deg);
+      /* position: fixed;
+      right: 30px;
+      top: 47%;
+  } */
+    }
+    
+    
+    .show-password-eye.hide {
+      transform: rotate(0deg);
+      position: fixed;
+      right: 30px;
+      top: 50%;
+    }
+    
+    
+    input[type="text"] {
+      padding-right: 30px; 
+      border-color: #706868;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    input[type="text"]:focus {
+      border-color: #4d90fe;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0 0 0.2rem rgba(77, 144, 255, 0.25);
+    }
+  
+  p {
+    display: block;
+    margin-block-start: 1px; 
+    margin-block-end: -10px; 
+    margin-inline-start: 2px;
+    margin-inline-end: -1px;
+    color: #e04848;
+    font-size: 12px;
+    margin-top: -6px;
+    margin-bottom: 1px;
+  }
+  
