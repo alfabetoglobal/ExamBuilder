@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
-import RegisterForm from './RegisterForm'; // Adjust the path based on your project structure
+import Registration from './Registration';
+import './Apply.css';
 
 function Apply() {
   const [role, setRole] = useState('');
+  const [showRegistration, setShowRegistration] = useState(false);
 
   const handleOptionChange = (e) => {
     setRole(e.target.value);
+    setShowRegistration(true);
   };
 
   return (
-    <div>
-      <h1>Choose your role:</h1>
-      <input type="radio" value="student" name="role" onChange={handleOptionChange} /> Student
-      <input type="radio" value="teacher" name="role" onChange={handleOptionChange} /> Teacher
-      <p>Your role is: {role}</p>
-      {role && <RegisterForm role={role} />}
+    <div className="Apply">
+      <h1 className={showRegistration ? 'hide-heading' : ''}>Apply as</h1>
+      <div className={`apply-options ${showRegistration ? 'hide' : ''}`}>
+        <select
+          className={`apply-select ${showRegistration ? 'hide' : ''}`}
+          value={role}
+          onChange={handleOptionChange}
+        >
+          <option value="">Select Role</option>
+          <option value="Student">Student</option>
+          <option value="Teacher">Teacher</option>
+        </select>
+      </div>
+      {showRegistration && <Registration selectedRole={role} />}
     </div>
   );
 }

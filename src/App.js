@@ -1,11 +1,12 @@
 import Registration from './Registration';
-import './Register.css';
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Apply from './Apply';
 
 function App() {
   return (
     <div className="App">
-      <Registration />     
+      <Registration /> 
     </div>
   );
 }
