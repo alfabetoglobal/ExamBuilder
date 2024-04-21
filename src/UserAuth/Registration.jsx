@@ -305,7 +305,7 @@ const Registration = ({ selectedRole }) => {
                            type="button" 
                            className="btn btn-success" 
                            onClick={handleNext} 
-                        //    disabled={!formik.isValid || (formik.touched && !formik.isValid)}
+                          disabled={!formik.isValid || (formik.touched && !formik.isValid)}
                         >
                            Next
                        </button>
