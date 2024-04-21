@@ -6,40 +6,51 @@ import './Register.css';
 import PhoneInput from 'react-phone-number-input'; 
 import 'react-phone-number-input/style.css';
 
-
 const Registration = ({ selectedRole }) => {
     // eslint-disable-next-line
     const fileRef = useRef(null);
     const [step, setStep] = useState(1);
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const basicDetailsValidationSchema = Yup.object({
         firstName: Yup.string().required('First Name is required'),
         lastName: Yup.string().required('Last Name is required'),
-        DOB: Yup.date().required('Date of Birth is required'),
+        DOB: Yup.date()
+        .max(new Date(), 'Date of Birth cannot be in the future')
+        .required('Date of Birth is required')
+        .test('is-past', 'Date of Birth cannot be in the future', function(DOB) {
+            const cutoff = new Date();
+            return DOB <= cutoff;
+        }),
         gender: Yup.string().required('Gender is required'),
     });
 
     const contactInfoValidationSchema = Yup.object({
         email: Yup.string().email('Invalid email address').required('Email is required'),
         phoneNumber: Yup.string()
-         .matches(/^\+\d{1,3}\d{10}$/, 'Phone number must be in the format "+[Country Code][Phone Number]"')
-         .required('Phone Number is required'),
+         .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits and contain only digits')
+        .required('Phone Number is required'),
         address: Yup.string().required('Address is required'),
+        flatNo: Yup.string().required('Flat/ House No. is required'),
+        city: Yup.string().required('City is required'),
+        country: Yup.string().required('Country is required'),
         PinCode: Yup.string().matches(/^[0-9]{6}$/, 'Invalid pincode').required('Pincode is required'),
     });
+    
 
     const instituteDetailsValidationSchema = Yup.object({
         instituteName: Yup.string().required('Institute Name is required'),
         instituteAddress: Yup.string().required('Institute Address is required'),
+        institutecity: Yup.string().required('City is required'),
+        institutecountry: Yup.string().required('Country is required'),
         experience: Yup.string().required('Experience is required').min(0, 'Experience cannot be negative'),
     });
 
     const identityValidationSchema = Yup.object({
-            identityType: Yup.string().required('Identity Type is required'),
-            identity: Yup.string().required('Identity is required'),
-            identityDocument: Yup.mixed().required('Identity Document is required'),
-        });
-        
+        identityType: Yup.string().required('Identity Type is required'),
+        identity: Yup.string().required('Identity is required'),
+        identityDocument: Yup.mixed().required('Identity Document is required'),
+    });
 
     const handleSubmit = async (values, { setSubmitting }) => {
         try {
@@ -50,27 +61,28 @@ const Registration = ({ selectedRole }) => {
                 DOB: values.DOB,
                 gender: values.gender,
                 email: values.email,
-                phoneNumber: values.phoneNumber,
+                phoneNumber:phoneNumber,
                 instituteName: values.instituteName,
-                instituteAddress: values.instituteAddress,
-                Role:selectedRole,
+                instituteAddress: `${values.flatNo}, ${values.city}, ${values.country}`,
+                Role: selectedRole,
                 experience: values.experience,
-                address: values.address,
+                address: `${values.flatNo}, ${values.city}, ${values.country}`,
                 Identity: values.identity,
+                IdentityType: values.identityType,
                 Active: 'false',
             };
 
             const requestBody = {
                 body: JSON.stringify(formData)
             };
-             console.log(requestBody);
+            console.log(requestBody);
+            
             const response = await axios.post('https://f3c71ors2e.execute-api.us-east-1.amazonaws.com/user/register', requestBody);
             console.log(response.data); 
             setSubmitting(false);
             
         } catch (error) {
             console.error('Registration failed:', error);
-    
             setSubmitting(false);
         }
     };
@@ -90,7 +102,7 @@ const Registration = ({ selectedRole }) => {
     return (
         <div className='container'>
             <div className="header">
-            <div className="text">Application for {selectedRole}</div>
+                <div className="text">Apply as {selectedRole}</div>
             </div>
             <Formik
                 initialValues={{
@@ -100,14 +112,17 @@ const Registration = ({ selectedRole }) => {
                     gender: '',
                     email: '',
                     phoneNumber: '', 
-                    Role:'selectedRole',
+                    Role: selectedRole,
                     address: '',
                     instituteName: '',
-                    instituteAddress: '',
+                    flatNo: '',
+                    city: '',
+                    country: '',
                     experience: '',
                     identity: '',
                     identityDocument: null,
-                    pincode: '',
+                    identityType:'',
+                    PinCode: '',
                 }}
                 validationSchema={(values) => {
                     switch (step) {
@@ -143,7 +158,7 @@ const Registration = ({ selectedRole }) => {
                                     ) : null}
                                 </div>
                                 <div className="input">
-                                    <Field type="date" name="DOB" placeholder="Date of Birth" />
+                                    <Field type="date" name="DOB" placeholder="Date of Birth" max={new Date().toISOString().split('T')[0]} />
                                     {formik.touched.DOB && formik.errors.DOB ? (
                                         <div className="error-popup">{formik.errors.DOB}</div>
                                     ) : null}
@@ -169,27 +184,35 @@ const Registration = ({ selectedRole }) => {
                                         <div className="error-popup">{formik.errors.email}</div>
                                     ) : null}
                                 </div>
-                                 <div className="input">
-                                <PhoneInput
-                                 autoComplete="off"
-                                 country={"in"}
-                                  name="phoneNumber"
-                                   placeholder="Phone Number"
-                                   inputprops={{
-                                    required:true,
-                                   }}
-                                      value={formik.values.phoneNumber}
-                                      onChange={value => formik.setFieldValue('phoneNumber', value)}
-                                       onBlur={formik.handleBlur('phoneNumber')}
-                                      />
-                                          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-                                          <div className="error-popup">{formik.errors.phoneNumber}</div>
-                                    )}
-                                     </div>
                                 <div className="input">
-                                    <Field type="text" autoComplete="off" name="address" placeholder="Address" />
-                                    {formik.touched.address && formik.errors.address ? (
-                                        <div className="error-popup">{formik.errors.address}</div>
+                                    <PhoneInput
+                                        international
+                                        countryCallingCodeEditable={true}
+                                        defaultCountry="IN"
+                                        value={phoneNumber}
+                                        onChange={setPhoneNumber}
+                                        onBlur={() => {}}
+                                    />
+                                   {formik.touched.phone && formik.errors.phone ? (
+                                    <div className="error-popup">{formik.errors.phone}</div>
+                               ) : null}
+                                </div>
+                                <div className="input">
+                                    <Field type="text" name="flatNo" placeholder="Flat/ House No." />
+                                    {formik.touched.flatNo && formik.errors.flatNo ? (
+                                        <div className="error-popup">{formik.errors.flatNo}</div>
+                                    ) : null}
+                                </div>
+                                <div className="input">
+                                    <Field type="text" autoComplete="off" name="city" placeholder="City" />
+                                    {formik.touched.city && formik.errors.city ? (
+                                        <div className="error-popup">{formik.errors.city}</div>
+                                    ) : null}
+                                </div>
+                                <div className="input">
+                                    <Field type="text" autoComplete="off" name="country" placeholder="Country" />
+                                    {formik.touched.country && formik.errors.country ? (
+                                        <div className="error-popup">{formik.errors.country}</div>
                                     ) : null}
                                 </div>
                                 <div className="input">
@@ -215,6 +238,18 @@ const Registration = ({ selectedRole }) => {
                                     ) : null}
                                 </div>
                                 <div className="input">
+                                    <Field type="text" autoComplete="off" name="institutecity" placeholder="City" />
+                                    {formik.touched.institutecity && formik.errors.institutecity ? (
+                                        <div className="error-popup">{formik.errors.institutecity}</div>
+                                    ) : null}
+                                </div>
+                                <div className="input">
+                                    <Field type="text" autoComplete="off" name="institutecountry" placeholder="Country" />
+                                    {formik.touched.institutecountry && formik.errors.institutecountry ? (
+                                        <div className="error-popup">{formik.errors.institutecountry}</div>
+                                    ) : null}
+                                </div>
+                                <div className="input">
                                     <Field type="number" autoComplete="off" name="experience" placeholder="Experience (in years)" />
                                     {formik.touched.experience && formik.errors.experience ? (
                                         <div className="error-popup">{formik.errors.experience}</div>
@@ -225,23 +260,33 @@ const Registration = ({ selectedRole }) => {
                             <>
                                 <h2>Identity Verification</h2>
                                 <div className="input">
-                               <Field type="text" autoComplete="off" name="identity" placeholder="Identity" />
-                               {formik.touched.identity && formik.errors.identity ? (
-                             <div className="error-popup">{formik.errors.identity}</div>
-                         ) : null}
-                             </div>
-                        <div className="input">
-                         <Field as="select" autoComplete="off" name="identityType">
-                         <option value="" disabled>Select Identity Type</option>
-                           <option value="aadhar">Aadhar Card</option>
-                             <option value="pan">PAN Card</option>
-                              <option value="studentId">Employee/Student ID</option>
-                            </Field>
-                              {formik.touched.identityType && formik.errors.identityType ? (
-                        <div className="error-popup">{formik.errors.identityType}</div>
-                        ) : null}
-                           </div>
-
+                                    <Field as="select" autoComplete="off" name="identityType">
+                                        <option value="" disabled>Select Identity Type</option>
+                                        {selectedRole === "Student" && (
+                                            <>
+                                                <option value="studentId">Student ID</option>
+                                                <option value="aadhar">Aadhar Card</option>
+                                                <option value="pan">PAN Card</option>
+                                            </>
+                                        )}
+                                        {selectedRole === "Teacher" && (
+                                            <>
+                                                <option value="teacherId">Teacher ID</option>
+                                                <option value="aadhar">Aadhar Card</option>
+                                                <option value="pan">PAN Card</option>
+                                            </>
+                                        )}
+                                    </Field>
+                                    {formik.touched.identityType && formik.errors.identityType ? (
+                                        <div className="error-popup">{formik.errors.identityType}</div>
+                                    ) : null}
+                                </div>
+                                <div className="input">
+                                    <Field type="text" autoComplete="off" name="identity" placeholder="Identity Number" />
+                                    {formik.touched.identity && formik.errors.identity ? (
+                                        <div className="error-popup">{formik.errors.identity}</div>
+                                    ) : null}
+                                </div>
                                 <div className="input">
                                     <input className="file-input" type="file" onChange={(event) => formik.setFieldValue("identityDocument", event.currentTarget.files[0])} />
                                     {formik.touched.identityDocument && formik.errors.identityDocument ? (
@@ -251,21 +296,27 @@ const Registration = ({ selectedRole }) => {
                             </>
                         )}
                         <div className="button-group">
-                          {step > 1 && (
-                          <button type="button" className="btn btn-warning" onClick={handlePrevious}>Previous</button>
-                          )}
-                        {step < 4 && (
-                        <button type="button" className="btn btn-success" onClick={handleNext} disabled={!formik.isValid}>
-                        Next
-                        </button>
-                         )}
-                        {step === 4 && (
-                       <button type="submit" className="btn btn-success" disabled={!formik.isValid || formik.isSubmitting}>
-                        {formik.isSubmitting ? 'Registering...' : 'Register'}
-                        </button>
-                         )}
-                          <button type="button" className="btn btn-danger" onClick={handleCancel}>Cancel</button>
-                      </div>
+                            {step > 1 && (
+                                <button type="button" className="btn btn-warning" onClick={handlePrevious}>Previous</button>
+                            )}
+                            {step < 4 && (
+                           <button 
+                           type="button" 
+                           className="btn btn-success" 
+                           onClick={handleNext} 
+                        //    disabled={!formik.isValid || (formik.touched && !formik.isValid)}
+                        >
+                           Next
+                       </button>
+                           
+                            )}
+                            {step === 4 && (
+                                <button type="submit" className="btn btn-success" disabled={!formik.isValid || formik.isSubmitting}>
+                                    {formik.isSubmitting ? 'Registering...' : 'Register'}
+                                </button>
+                            )}
+                            <button type="button" className="btn btn-danger" onClick={handleCancel}>Cancel</button>
+                        </div>
                     </Form>
                 )}
             </Formik>
