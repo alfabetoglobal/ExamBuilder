@@ -2,17 +2,14 @@ import React, { useRef, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import '../css/Register.css';
+import './Register.css';
 import PhoneInput from 'react-phone-number-input'; 
 import 'react-phone-number-input/style.css';
-
 const Registration = ({ selectedRole }) => {
     // eslint-disable-next-line
-    
     const fileRef = useRef(null);
     const [step, setStep] = useState(1);
     const [phoneNumber, setPhoneNumber] = useState('');
-
     const basicDetailsValidationSchema = Yup.object({
         firstName: Yup.string().required('First Name is required'),
         lastName: Yup.string().required('Last Name is required'),
@@ -25,7 +22,6 @@ const Registration = ({ selectedRole }) => {
         }),
         gender: Yup.string().required('Gender is required'),
     });
-
     const contactInfoValidationSchema = Yup.object({
         email: Yup.string().email('Invalid email address').required('Email is required'),
         phoneNumber: Yup.string()
@@ -38,7 +34,6 @@ const Registration = ({ selectedRole }) => {
         PinCode: Yup.string().matches(/^[0-9]{6}$/, 'Invalid pincode').required('Pincode is required'),
     });
     
-
     const instituteDetailsValidationSchema = Yup.object({
         instituteName: Yup.string().required('Institute Name is required'),
         instituteAddress: Yup.string().required('Institute Address is required'),
@@ -46,13 +41,11 @@ const Registration = ({ selectedRole }) => {
         institutecountry: Yup.string().required('Country is required'),
         experience: Yup.string().required('Experience is required').min(0, 'Experience cannot be negative'),
     });
-
     const identityValidationSchema = Yup.object({
         identityType: Yup.string().required('Identity Type is required'),
         identity: Yup.string().required('Identity is required'),
         identityDocument: Yup.mixed().required('Identity Document is required'),
     });
-
     const handleSubmit = async (values, { setSubmitting }) => {
         try {
             const formData = {
@@ -72,7 +65,6 @@ const Registration = ({ selectedRole }) => {
                 IdentityType: values.identityType,
                 Active: 'false',
             };
-
             const requestBody = {
                 body: JSON.stringify(formData)
             };
@@ -87,19 +79,15 @@ const Registration = ({ selectedRole }) => {
             setSubmitting(false);
         }
     };
-
     const handleNext = () => {
         setStep(step + 1);
     };
-
     const handlePrevious = () => {
         setStep(step - 1);
     };
-
     const handleCancel = () => {
         window.location.reload();
     };
-
     return (
         <div className='container'>
             <div className="header">
@@ -305,6 +293,7 @@ const Registration = ({ selectedRole }) => {
                            type="button" 
                            className="btn btn-success" 
                            onClick={handleNext} 
+                        //    disabled={!formik.isValid || (formik.touched && !formik.isValid)}
                           disabled={!formik.isValid || (formik.touched && !formik.isValid)}
                         >
                            Next
@@ -327,5 +316,4 @@ const Registration = ({ selectedRole }) => {
         </div>
     );
 };
-
 export default Registration;
