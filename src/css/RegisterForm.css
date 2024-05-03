@@ -1,0 +1,202 @@
+* 
+{
+  box-sizing: border-box;
+  font-family: "Georgia Serif";
+}
+body {
+  background-image:url('../Assets/girl.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  max-width: 400px;
+  margin: 5% auto;
+  padding: 2rem;
+  background-color:#fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.register-form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color:  #0a4570;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-field {
+  position: relative;
+  margin-bottom: 1.5rem;
+  border-color: #0a4570;
+  cursor: pointer;
+}
+.greyish-color {
+  background-color: #f2f2f2; 
+  color: #999999; 
+}
+
+.form-field input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: #0a4570;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+.disabled {
+  background-color: #f2f2f2;
+  cursor: not-allowed;
+}
+.error-message {
+  left: 0;
+  font-size: 0.8rem;
+  color: #e31102;
+  padding: 5px;
+  margin-top: 3px
+  }
+
+
+.form-field-email {
+  position: relative;
+  margin-bottom: 1.5rem;
+  border-color: #0a4570;
+  cursor: pointer;
+}
+
+.form-field-email input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.error-message-email {
+  left: 0;
+  font-size: 0.8rem;
+  color: #e31102;
+  padding: 5px;
+  margin-top: 3px;
+}
+.form-field-email button {
+  background-color: #0a4570;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.form-field-email button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.form-field-otp {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  border-color: #0a4570;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.form-field-otp input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error-message-otp {
+  left: 0;
+  font-size: 0.8rem;
+  color: #e31102;
+  padding: 5px;
+  margin-top: 3px;
+}
+
+.form-field-otp button {
+  background-color: #0a4570;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.form-field-otp button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.register-button {
+  background-color:#0a4570;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.1rem;
+  width: 100%;
+}
+
+.register-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.login-link a {color: #0a4570;
+  text-decoration: none;
+  border-bottom: 1px solid #0a4570;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 400px) {
+  .register-form-container {
+    margin-top: 3rem;
+    padding: 1.5rem;
+  }
+  
+  .register-form-title {
+    font-size: 1.5rem;
+  }
+  
+  .form-field input {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .form-field-email button {
+    padding: 0.5rem 1.5rem;
+  }
+}

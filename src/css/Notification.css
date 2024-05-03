@@ -1,0 +1,10 @@
+.notification {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.notification.error {
+  background-color: #ffcccc; /* Red color for error */
+  color: #990000; /* Dark red text */
+}
