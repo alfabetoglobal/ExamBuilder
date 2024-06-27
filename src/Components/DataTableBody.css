@@ -1,0 +1,47 @@
+/* DataTableBody.css */
+
+tbody {
+    background-color: #ffffff;
+  }
+  
+  tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  td:last-child {
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    td {
+      display: block;
+      text-align: right;
+      padding: 10px;
+      border-bottom: 1px solid #dddddd;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+    }
+  
+    td:last-child {
+      text-align: right;
+    }
+  }
+  

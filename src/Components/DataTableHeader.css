@@ -1,0 +1,100 @@
+/* DataTableHeader.css */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th label {
+    margin-left: 30%;
+  }
+  
+  th select,
+  th input[type="text"] {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  th input[type="text"] {
+    width: 200px;
+  }
+/*   
+  th[colspan="6"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:10% ;
+  } */
+  
+  th[colspan="6"] label {
+    /* display: flex; */
+    align-items: center;
+    margin-left:30% ;
+
+  }
+  
+  th[colspan="6"] label:first-child {
+    margin-right:8% ;
+  }
+  
+  th:last-child {
+    text-align: center;
+  }
+
+  /* Add this to your App.css or a relevant CSS file */
+
+/* Styling for the table header containing the 'Show entries' dropdown */
+/* th[colspan="6"] label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+   */
+  /* th[colspan="6"] select {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  } */
+  
+  th[colspan="5"] {
+    text-align: space;
+    padding: 10px; /* Adds padding around the cell */
+    background-color: #f9f9f9; /* Light background color for better visibility */
+  }
+  
+  th[colspan="5"] label select:focus {
+    outline: none;
+    border-color: #007bff; /* Adds a blue border when the select is focused */
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    th[colspan="5"] {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    th[colspan="5"] label {
+      margin-bottom: 5px;
+    }
+  }
+  

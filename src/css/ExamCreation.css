@@ -1,0 +1,385 @@
+/* Default (Desktop) Styles */
+.overview-container {
+  padding: 20px;
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  height: 80vh;
+  transition: all 0.3s ease;
+}
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #0a4570;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.overview {
+  color: #0a4570;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-dropdown button {
+  background-color: #0a4570;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filter-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.filter-dropdown .dropdown-content div {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.filter-dropdown .dropdown-content div:hover {
+  background-color: #0a4570;
+  color: white;
+}
+
+.filter-dropdown .show {
+  display: block;
+}
+
+.create-exam-button {
+  background-color: #0a4570;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.search-container {
+  margin-bottom: 10px;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 30%;
+}
+
+.search-field input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.table-container {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  height: 60%;
+  overflow-y: auto;
+}
+
+.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exam-table th, .exam-table td {
+  padding: 7px;
+  border-bottom: 1px solid #ddd;
+}
+
+.exam-table th {
+  color: #0a4570;
+  background-color: #fff;
+  text-align: left;
+}
+
+.exam-table .status-badge {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.exam-table .status-badge.active,
+.exam-table .status-badge.inactive {
+  display: inline-block;
+  margin-right: 5px;
+  box-shadow: 10px 10px 9px rgba(7, 7, 7, 0.1);
+}
+
+.exam-table .status-badge.active {
+  background-color: #28a745;
+}
+
+.exam-table .status-badge.inactive {
+  background-color: #dc3545;
+}
+
+.exam-table .action-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.modall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modall-dialog {
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+  width: 600px;
+  padding-top:0px;
+}
+
+.modall-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modall-title {
+  font-size: 1.25rem;
+  color: #0a4570;
+}
+
+.close-button {
+  color: #0a4570;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+
+  top: 2px; 
+  right: 10px; 
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.submit-button {
+  background-color: #0a4570;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pagination-container button {
+  margin: 0 5px;
+  padding: 5px;
+  width:20px;
+  height: 20px;
+  background-color: #0a4570;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination-container button:hover {
+  background-color: #0a4570;
+}
+
+.pagination-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-container span {
+  margin: 0 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.action-button-eye,
+.action-button-edit,
+.action-button-delete {
+  background-color: #3058a8;
+  border: 1px solid #322a2a;
+  border-radius: 4px;
+  padding: 2px;
+  margin-right: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 1px rgba(35, 32, 32, 0.2);
+}
+
+.action-button-eye:hover,
+.action-button-edit:hover,
+.action-button-delete:hover {
+  background-color: #327bb3;
+  box-shadow: 0 4px 1px rgba(35, 32, 32, 0.2);
+}
+
+.action-button-eye svg,
+.action-button-edit svg,
+.action-button-delete svg {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.action-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .overview-container {
+    width: 90%;
+    height: 50vh;
+    margin-bottom: 10%;
+    margin-left: 5%;
+  }
+
+  .controls {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .search-field {
+    width: 40%;
+    margin-bottom: 10px;
+  }
+
+  .create-exam-button {
+    width: 20%;
+  }
+  .modall-dialog{
+    width: 50%;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .overview-container {
+    width: 100%;
+    height: 80vh;
+    margin-bottom: 20%;
+    margin-left: 5%;
+  }
+
+  .controls {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .search-field {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .create-exam-button {
+    width: 60%;
+  }
+  .modall-dialog{
+    width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .overview-container {
+    width: 100%;
+    height: 90vh;
+    margin-bottom: 30%;
+    margin-left: 5%;
+  }
+
+  .search-field {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .create-exam-button {
+    width: 80%;
+  }
+
+  .exam-table th,
+  .exam-table td {
+    font-size: 14px;
+  }
+
+  .pagination-container button {
+    width: 25px;
+    height: 25px;
+  }
+  .modall-dialog{
+    width: 50%;
+  }
+}

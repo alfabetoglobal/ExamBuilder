@@ -1,0 +1,77 @@
+.container-EditDescriptiveQuestion {
+    max-width:70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+}
+
+.container-EditDescriptiveQuestion h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0a4570;
+}
+
+.form-control-Des {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-control-Des:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+.form-control-des {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+}
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #0a4570;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0a4570;
+  }
+
+/* @media (max-width: 768px) {
+    .container-EditDescriptiveQuestion {
+        padding: 15px;
+        margin-top: 30%;
+        margin-left: 15%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-EditDescriptiveQuestion {
+        padding: 10px;
+        margin-top: 30%;
+        margin-left: 30%;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .form-control-des {
+        font-size: 12px;
+    }
+} */

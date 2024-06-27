@@ -1,0 +1,141 @@
+.footer {
+  width: 100%;
+  height: 200px; /* Adjust the height as needed */
+  background-color: #045f8a; /* Adjust the background color as needed */
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  text-align: center;
+ 
+}
+.footer {
+  /* background-color: #2f7fe1;
+  color: #fff;
+  padding: 10px;
+  text-align: center; */
+  position: relative;
+  /* bottom: 0;
+  left: 0;
+  width: 100%; */
+}
+.footer-content {
+  display: flow-r;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+} 
+
+
+.footer-content p {
+  margin: 2px 0;
+  color: #fbfbfb;
+}
+
+.footer-content a {
+  color: #fffdfd;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-left p,
+.footer-right p {
+margin: 2px 0;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-link {
+  color: #fcfaf8;
+  font-size: 2rem;
+  margin-right: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+/* .social-link {
+  margin: 0 5px;
+  font-size: 20px;
+  color: #efe5e5;
+} */
+
+.social-link:hover {
+  transform: translateY(-5px);
+}
+.footer-right nav ul li a {
+  font-weight: bold; 
+   color: #fff;
+}
+
+/* .footer-left p,
+.footer-right p {
+  margin: 5px 0;
+}
+
+.footer-right nav ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-right nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.footer-right nav ul li:last-child {
+  margin-right: 0;
+}
+
+.footer-right nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-right nav ul li a:hover {
+  color: #ccc;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+}
+
+.social-link {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #ccc;
+} */

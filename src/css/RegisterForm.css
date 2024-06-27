@@ -4,26 +4,38 @@
   font-family: "Georgia Serif";
 }
 body {
-  background-image:url('../Assets/girl.png');
+  background-image:url('../Assets/pencil.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100vh; 
   margin: 0;
-}
+  /* overflow: hidden; */
+} 
+.form-field input[type='text'],
+.form-field input[type='email'],
+.form-field input[type='password'] {
+  padding-left: 30px; /* Adjust as necessary */
 
+}
 
 .register-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5rem;
-  max-width: 400px;
-  margin: 5% auto;
+  /* margin-top: -%; */
+  width: 450px;
+  /* max-margin: ; */
+  max-margin: 2% auto;
   padding: 2rem;
   background-color:#fff;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(18, 91, 133);
+  position: fixed; 
+  top: 55%; 
+  left: 47%;
+  transform: translate(-40%, -47%); /* Centering trick */
+  
 }
 
 .register-form-title {
@@ -38,14 +50,44 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 400px;
+  
 }
 
 .form-field {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2px;
   border-color: #0a4570;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  
 }
+.form-field .inputt-icon {
+  padding: 0;
+  left: 10px;
+  /* top: 50%; */
+  transform: translateY(-50%);
+  color: #888;
+  position: absolute; /* Position the icon */
+  top: 60px; /* Align the icon vertically in the middle */
+  transform: translateY(-35px); /* Center the icon vertically */
+  left: 10px; /* Adjust the left position */
+  position: relative;
+}
+.inputt-icon.security-icon {
+  /* Add your styles here */
+  color:  #888; /* Change the color of the icon */
+  font-size: 20px; /* Adjust the size of the icon */
+  margin-right: 10px; /* Adjust the spacing between the icon and the input field */
+  position: absolute; /* Position the icon */
+  top: 60px; /* Align the icon vertically in the middle */
+  transform: translateY(-35px); /* Center the icon vertically */
+  left: 10px; /* Adjust the left position */
+  position: relative;
+  
+
+}
+
 .greyish-color {
   background-color: #f2f2f2; 
   color: #999999; 
@@ -56,6 +98,7 @@ body {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  /* margin-bottom: 1px; */
 }
 
 .form-field input:focus {
@@ -117,7 +160,7 @@ body {
   margin-bottom: 1.5rem;
   border-color: #0a4570;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 3px;
 }
 
 
@@ -144,7 +187,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
-  margin-top: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 .form-field-otp button:disabled {
@@ -182,12 +225,32 @@ body {
 .login-link a:hover {
   text-decoration: underline;
 }
+
+.success-message{
+  text-align: center;
+  font-size: 1rem;
+  color: #0a4570;
+}
 @media (max-width: 400px) {
   .register-form-container {
-    margin-top: 3rem;
+    margin-top:  4rem;
     padding: 1.5rem;
+    top: 65%; 
+    left: 47%;
+    transform: translate(-40%, -47%); /* Centering trick */
+    display: grid; /* or display: flex; */
+    gap: -1rem; /* Adjust the value as needed */
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    /* width: 1%; */
+    /* max-width: 0px; */
+    
   }
-  
+  .register-form-container input {
+    margin-bottom: -10px; /* Adjust the value as needed */
+}
+
   .register-form-title {
     font-size: 1.5rem;
   }
@@ -198,5 +261,131 @@ body {
   
   .form-field-email button {
     padding: 0.5rem 1.5rem;
+  }
+}
+/* .password-show,
+.password-hide {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+} */
+
+/* .password-show {
+  color: #262424; 
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+} */
+
+/* .password-hide {
+  color: #1c1b1b; 
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+} */
+
+/* .password-toggle {
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  transform: translateY(-40%);
+  cursor: pointer;
+  color: #999999; 
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #999999; 
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  
+
+} */
+
+.password-toggle {
+  position: absolute;
+  /* top: 30px; */
+  right: 10px;
+  transform: translateY(-30%);
+  /* cursor: pointer; */
+  color: #999;
+  /* transition: color 0.2s ease; */
+  position: absolute; /* Position the icon */
+  top: 70px; /* Align the icon vertically in the middle */
+  transform: translateY(-95px); /* Center the icon vertically */
+  left: 90%; /* Adjust the left position */
+  position: relative;
+}
+
+.password-toggle:hover {
+  color: #333;
+  
+}
+
+.greyish-color input {
+  background-color: #f2f2f2;
+  color: #999;
+  cursor: not-allowed;
+  
+}
+
+.greyish-color .password-toggle {
+  color: #999;
+  cursor: not-allowed;
+}
+.form-field-inline {
+  display: flex;
+  gap: 10px;
+}
+
+.form-field-inline .form-field {
+  flex: 1;
+}
+@media (max-width: 480px) {
+  .register-form-container {
+    padding: 20px;
+    max-width: 80%;
+    margin: -5%;
+    height: 80vh;
+    margin-top: -16%;
+  
+  }
+
+  .register-form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-field {
+    margin-bottom: 15px;
+    margin-top: -2%;
+  }
+  .register-form-wrapper {
+    padding: 10px;/* Apply padding to adjust for smaller devices */
+    
+  }
+
+  .password-toggle {
+    font-size: 15px;
+    position: absolute;
+  top: 80%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease;
+  position: absolute; /* Position the icon */
+  /* position: relative; */
+
+  }
+
+  .login-link {
+    margin-top: -2%;
   }
 }

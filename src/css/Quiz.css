@@ -1,0 +1,178 @@
+.container-quiz {
+  padding: 20px;
+  margin-left: 5%;
+  margin-right: 2%;
+  background-color: #fff;
+  width: 90%;
+  
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.back-button {
+  color: #0a4570;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.quizdetailheading {
+  color: #0a4570;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.statusheading {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.statusheading.active {
+  color: green;
+}
+
+.statusheading.inactive {
+  color: red;
+}
+
+.QuizDis {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.QuizMcq, .QuizDes {
+  color: #0a4570;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card .card-header.Quizicon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card .card-header .edit-btn,
+.card .card-header .delete-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.edit-btn {
+  color: #0a4570;
+}
+
+.delete-btn {
+  color: red;
+}
+
+.card-body .question-mcq,
+.card-body .question-des {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+
+/* @media (max-width: 1200px) {
+  .container-quiz {
+    margin-left: 1%;
+    padding: 15px;
+  }
+} */
+
+@media (max-width: 992px) {
+  .container-quiz {
+    margin-left: 5%;
+    padding: 10px;
+  }
+  
+  .quizdetailheading {
+    font-size: 1.25rem;
+  }
+  
+  .QuizMcq, .QuizDes {
+    font-size: 1rem;
+  }
+
+  .card-body .question-mcq,
+  .card-body .question-des {
+    font-size: 1rem;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .container-quiz {
+    margin-left:10%;
+    padding: 10px;
+  }
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-button {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .card-header .edit-btn,
+  .card-header .delete-btn {
+    font-size: 0.875rem;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  .QuizMcq, .QuizDes {
+    font-size: 0.875rem;
+  }
+
+  .card-body .question-mcq,
+  .card-body .question-des {
+    font-size: 0.875rem;
+  }
+  .card .card-header.Quizicon{
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-body {
+    padding: 10px;
+  }
+  
+  .quizdetailheading {
+    font-size: 1rem;
+  }
+  
+  .QuizMcq, .QuizDes {
+    font-size: 0.75rem;
+  }
+
+  .card-body .question-mcq,
+  .card-body .question-des {
+    font-size: 0.75rem;
+  }
+}

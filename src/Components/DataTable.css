@@ -1,0 +1,56 @@
+/* DataTable.css */
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  /* Table header styling */
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Alternating row colors */
+  tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  /* Header styling */
+  thead th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Add some padding to the table cells */
+  td {
+    position: relative;
+  }
+  
+  /* Style for the action icons */
+  td .fa-icon {
+    cursor: pointer;
+    margin-right: 20px;
+    /* color: rgb(212, 127, 16);  */
+  }
+  
+  /* Style for the button */
+  button {
+    padding: 5px 10px;
+    background-color: #0a4570;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  /* Button hover effect */
+  button:hover {
+    background-color: #0a4570;
+  }
+  
