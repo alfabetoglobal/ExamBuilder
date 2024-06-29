@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faEye, faPencilAlt,faTrashAlt, faSearch, faFilter,faAngleLeft,faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import {faEye, faPencilAlt,faTrashAlt, faSearch, faFilter,faAngleLeft,faAngleRight,faGear } from '@fortawesome/free-solid-svg-icons';
 import '../css/ExamCreation.css';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -258,6 +258,7 @@ return (
                     <th>Is Completed</th>
                     <th>Created At</th>
                     <th>Actions</th>
+                    <th>Settings</th>
                 </tr>
             </thead>
             <tbody>
@@ -286,6 +287,11 @@ return (
                                         </button>
                                     </>
                                 )}
+                            </td>
+                            <td>
+                            <button className="setting-button">
+        <FontAwesomeIcon icon={faGear} />
+      </button>
                             </td>
                         </tr>
                     ))

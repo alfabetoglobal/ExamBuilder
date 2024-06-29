@@ -151,7 +151,7 @@ const ExamForm = () => {
       const base64Data = reader.result.split(",")[1]; 
       if (type === "question") {
         setCurrentQuestion((prev) => ({ ...prev, questionImage: base64Data }));
-      } else if (type === "option") {
+      } else if (type === "option" && index !== null) {
         const updatedOptionImages = [...currentQuestion.optionImages];
         updatedOptionImages[index] = base64Data;
         setCurrentQuestion((prev) => ({ ...prev, optionImages: updatedOptionImages }));
@@ -305,9 +305,9 @@ const ExamForm = () => {
         <h2 className="Examtitle">Exam Form</h2>
         <p>Title: {title}</p>
         <form>
-          <div className="form-group">
+          <div className="forme-group">
             <select
-              className="form-select"
+              className="forme-select"
               id="questionType"
               name="questionType"
               value={questionType}
@@ -327,43 +327,43 @@ const ExamForm = () => {
                 <div className="total-questions">
                   <p>Total Questions: <span id="total-questions">{totalQuestions}</span></p>
                 </div>
-                <div className="form-group">
-                <button
-                    type="button"
-                    className="upload-button"
-                    onClick={() => document.getElementById("questionImageUpload").click()}
-                  >
-                    Upload Question Image
-                  </button>
-                  <input
-                    type="file"
-                    id="questionImageUpload"
-                    style={{ display: "none" }}
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e.target.files[0], "question")}
-                  />
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Question"
-                    aria-label="Question"
-                    id="question"
-                    name="question"
-                    value={currentQuestion.question}
-                    onChange={(e) =>
-                      setCurrentQuestion({
-                        ...currentQuestion,
-                        question: e.target.value,
-                      })
-                    }
-                  />
-                  
-                </div>
+                <div className="forme-group-question">
+  <input
+    type="text"
+    className="forme-control"
+    placeholder="Question"
+    aria-label="Question"
+    id="question"
+    name="question"
+    value={currentQuestion.question}
+    onChange={(e) =>
+      setCurrentQuestion({
+        ...currentQuestion,
+        question: e.target.value,
+      })
+    }
+  />
+  <button
+    type="button"
+    className="upload-button"
+    onClick={() => document.getElementById("questionImageUpload").click()}
+  >
+    Upload Question Image
+  </button>
+  <input
+    type="file"
+    id="questionImageUpload"
+    style={{ display: "none" }}
+    accept="image/*"
+    onChange={(e) => handleImageUpload(e.target.files[0], "question")}
+  />
+</div>
+
                 {currentQuestion.options.map((option, index) => (
-                  <div key={index} className="form-group">
+                  <div key={index} className="forme-group">
                     <input
                       type="text"
-                      className="form-control"
+                      className="forme-control"
                       placeholder={`Option ${index + 1}`}
                       aria-label={`Option ${index + 1}`}
                       id={`option${index + 1}`}
@@ -371,6 +371,20 @@ const ExamForm = () => {
                       value={option}
                       onChange={(e) => handleOptionChange(index, e)}
                     />
+                    <button
+    type="button"
+    className="upload-button"
+    onClick={() => document.getElementById("optionImageUpload").click()}
+  >
+    Upload Option Image
+  </button>
+  <input
+    type="file"
+    id="optionImageUpload"
+    style={{ display: "none" }}
+    accept="image/*"
+    onChange={(e) => handleImageUpload(e.target.files[0], "option")}
+  />
                     {index >= 2 && (
                       <button
                         type="button"
@@ -382,10 +396,10 @@ const ExamForm = () => {
                     )}
                   </div>
                 ))}
-                <div className="form-group">
+                <div className="forme-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className="forme-control"
                     placeholder="Enter correct answer"
                     aria-label="Enter correct answer"
                     id="correctAnswer"
@@ -399,9 +413,9 @@ const ExamForm = () => {
                     }
                   />
                 </div>
-                <div className="form-group">
+                <div className="forme-group">
                   <textarea
-                    className="form-control"
+                    className="forme-control"
                     id="answerDescription"
                     placeholder="Enter answer description (optional)"
                     aria-label="Enter answer description"
@@ -423,7 +437,7 @@ const ExamForm = () => {
                   >
                     Add Option
                   </button>
-                  <button
+                  {/* <button
     type="button"
     className="upload-button"
     onClick={() => document.getElementById("optionImageUpload").click()}
@@ -436,7 +450,7 @@ const ExamForm = () => {
     style={{ display: "none" }}
     accept="image/*"
     onChange={(e) => handleImageUpload(e.target.files[0], "option")}
-  />
+  /> */}
                   <button
                     type="button"
                     className="add-question-button"
@@ -475,7 +489,7 @@ const ExamForm = () => {
                <div className="total-questions">
                 <p>Total Questions: <span id="total-questions">{totalQuestions}</span></p>
                </div>
-               <div className="form-group">
+               {/* <div className="forme-group">
                <button
                   type="button"
                   className="upload-button"
@@ -492,7 +506,7 @@ const ExamForm = () => {
                 />
                 <input
                   type="text"
-                  className="form-control"
+                  className="forme-control"
                   id="subjectiveQuestion"
                   placeholder="Question"
                   aria-label="Question"
@@ -505,10 +519,42 @@ const ExamForm = () => {
                     })
                   }
                 />
-               </div>
-               <div className="form-group">
+               </div> */}
+               <div className="forme-group-question">
+  <input
+    type="text"
+    className="forme-control"
+    id="subjectiveQuestion"
+    placeholder="Question"
+    aria-label="Question"
+    name="subjectiveQuestion"
+    value={currentQuestion.question}
+    onChange={(e) =>
+      setCurrentQuestion({
+        ...currentQuestion,
+        question: e.target.value,
+      })
+    }
+  />
+  <button
+    type="button"
+    className="upload-button"
+    onClick={() => document.getElementById("questionImageUpload").click()}
+  >
+    Upload Question Image
+  </button>
+  <input
+    type="file"
+    id="questionImageUpload"
+    style={{ display: "none" }}
+    accept="image/*"
+    onChange={(e) => handleImageUpload(e.target.files[0], "question")}
+  />
+</div>
+
+               <div className="forme-group">
                 <textarea
-                  className="form-control"
+                  className="forme-control"
                   id="answerDescription"
                   placeholder="Enter answer description"
                   aria-label="Enter answer description"

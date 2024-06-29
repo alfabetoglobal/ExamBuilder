@@ -6,6 +6,7 @@ import { faArrowLeft, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import '../css/Quiz.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import questionImagePlaceholder from '../Assets/board.jpg'; // Placeholder image
 
 const Quiz = () => {
     const { id } = useParams();
@@ -69,7 +70,7 @@ const Quiz = () => {
         navigate(`/navigation/mcq/${question.mcqQuestion_id}`, { state: { question } });
         console.log(question);
     };
-    
+
     const handleEditDescriptiveQuestion = (question) => {
         navigate(`/navigation/descriptive/${question.descriptiveQuestion_id}`, { state: { question } });
         console.log(question);
@@ -146,10 +147,14 @@ const Quiz = () => {
     if (!quizDetails) {
         return <div>No quiz details available</div>;
     }
-
+    
+    const isImageURL = (url) => {
+        return /\.(jpeg|jpg|gif|png)$/.test(url);
+    };
+    
     return (
         <div className="container-quiz">
-             <ToastContainer />
+            <ToastContainer />
             <div className="card mt-3">
                 <div className="card-header">
                     <button className="back-button" onClick={() => window.history.back()}>
@@ -188,8 +193,22 @@ const Quiz = () => {
                                             <p>
                                                 <strong>Question {index + 1}:</strong> {question.question}
                                             </p>
+                                            {question.image ? (
+                                                <img src={question.image} alt={`Question ${index + 1}`} className="question-image" />
+                                            ) : (
+                                                <img src={questionImagePlaceholder} alt="Placeholder" className="question-image" />
+                                            )}
                                             <p>
-                                                <strong>Options:</strong> {question.answers.join(', ')}
+                                                <strong>Options:</strong>
+                                                {question.answers.map((answer, i) => (
+                                                    <div key={i}>
+                                                        <strong>Option {i + 1}:</strong> {isImageURL(answer) ? (
+                                                            <img src={answer} alt={`Option ${i + 1}`} className="option-image" />
+                                                        ) : (
+                                                            answer
+                                                        )}
+                                                    </div>
+                                                ))}
                                             </p>
                                             <p>
                                                 <strong>Description:</strong> {question.description}
@@ -226,6 +245,11 @@ const Quiz = () => {
                                             <p>
                                                 <strong>Question {index + 1}:</strong> {question.question}
                                             </p>
+                                            {question.image ? (
+                                                <img src={question.image} alt={`Question ${index + 1}`} className="question-image" />
+                                            ) : (
+                                                <img src={questionImagePlaceholder} alt="Placeholder" className="question-image" />
+                                            )}
                                             <p>
                                                 <strong>Answer:</strong> {question.answer}
                                             </p>

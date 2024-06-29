@@ -280,7 +280,8 @@
 
 .action-button-eye:hover,
 .action-button-edit:hover,
-.action-button-delete:hover {
+.action-button-delete:hover
+ {
   background-color: #327bb3;
   box-shadow: 0 4px 1px rgba(35, 32, 32, 0.2);
 }
@@ -297,6 +298,20 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+
+.setting-button {
+  background-color: transparent; 
+  border: none; 
+  color: #333; 
+  padding: 0; 
+  cursor: pointer; 
+  
+}
+
+.setting-button:focus {
+  outline: none; 
 }
 
 /* Tablet Styles */

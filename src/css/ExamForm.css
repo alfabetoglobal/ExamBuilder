@@ -44,14 +44,43 @@
   text-align: center;
 }
 
-.form-group {
+.forme-group {
+  margin-bottom: 10px;
+}
+.forme-group-question {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-.form-select,
-.form-control {
+.forme-group-question input[type="text"] {
+  flex: 1;
+}
+
+.forme-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.forme-group input[type="text"] {
+  flex: 1;
+}
+
+.upload-button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #0a4570;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forme-select,
+.forme-control {
   width: 100%;
-  padding: 10px;
+  padding: 7px;
   margin-top: 2px;
 }
 .button-group {
@@ -120,15 +149,15 @@
 .SUBcontainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Add some space between flex items */
+  gap: 10px; 
 }
 
 .MCQFORM,
 .SUBFORM {
   flex: 3;
-  max-height: 400px; /* Adjust the height as needed */
+  max-height: 400px;
   overflow-y: auto;
-  padding-right: 10px; /* Adjust the padding as needed */
+  padding-right: 10px; 
   margin-bottom: 20px;
 }
 
@@ -147,6 +176,21 @@
 .ADDMCQ
 .ADDSUB{
   color-scheme: #0a4570;
+}
+
+
+.file-links {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.file-links a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.file-links a:hover {
+  color: #0056b3;
 }
 
 @media (max-width: 768px) {

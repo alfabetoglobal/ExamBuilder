@@ -99,7 +99,7 @@ const EditExam = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="formm-group">
                     <label htmlFor="isCompleted">Is Completed</label>
                     <label className="switch">
                         <input
@@ -112,7 +112,7 @@ const EditExam = () => {
                         <span className="slider round"></span>
                     </label>
                 </div>
-                <div className="form-group">
+                <div className="formm-group">
     <label htmlFor="status">Status</label>
     <select
         id="status"
@@ -126,7 +126,7 @@ const EditExam = () => {
         <option value="Inactive">Inactive</option>
     </select>
 </div>
-                <div className="form-group">
+                <div className="formm-group">
                     <label htmlFor="createdAt">Created At</label>
                     <input
                         type="text"
