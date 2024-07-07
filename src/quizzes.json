@@ -1,0 +1,10 @@
+
+[
+    { "id": 1, "quizTitle": "Mathematics Quiz" },
+    { "id": 2, "quizTitle": "Science Quiz" },
+    { "id": 3, "quizTitle": "History Quiz" },
+    { "id": 4, "quizTitle": "Geography Quiz" },
+    { "id": 4, "quizTitle": "Computer Science Quiz" },
+    { "id": 5, "quizTitle": "Literature Quiz" },
+    { "id": 5, "quizTitle": "English Quiz" }
+]

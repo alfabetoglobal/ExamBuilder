@@ -1,0 +1,397 @@
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0a4570;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.exam-form {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+}
+
+.Examtitle {
+  color: #0a4570;
+  text-align: center;
+}
+
+.forme-group {
+  margin-bottom: 10px;
+}
+
+.forme-group-question {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.forme-group-question input[type="text"] {
+  flex: 1;
+}
+
+.forme-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.forme-group input[type="text"] {
+  flex: 1;
+}
+
+
+.forme-select,
+.forme-control {
+  width: 100%;
+  padding: 7px;
+  margin-top: 2px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-question-button{
+  margin-top: 3px;
+  margin-left: 5zpx;
+  margin-right: 10px;
+  margin-top: 78x;
+/* Add margin-right to create space between buttons */
+  padding: 10px 20px;
+  background-color: #0a4570;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-option-button,
+.upload-button {
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 78x;
+/* Add margin-right to create space between buttons */
+  padding: 10px 20px;
+  background-color: #0a4570;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.submit-questions-button {
+  padding: 10px 20px;
+  background-color: #0a4570;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* .remove-button {
+
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+} */
+
+/* .upload-button{
+  margin-left: 10px;
+} */
+.import-section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.dropzone {
+  padding: 20px;
+  border: 2px dashed #0a4570;
+  border-radius: 5px;
+  background-color: #e9ecef;
+  text-align: center;
+  cursor: pointer;
+}
+
+.MCQcontainer,
+.SUBcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.MCQFORM,
+.SUBFORM {
+  flex: 3;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.import-section {
+  flex: 1;
+  max-width: 300px;
+}
+
+.import-section .dropzone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.IMPORTMCQ,
+.IMPORTSUB,
+.ADDMCQ .ADDSUB {
+  color-scheme: #0a4570;
+}
+
+
+.file-links {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.file-links a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.file-links a:hover {
+  color: #0056b3;
+}
+
+@media (max-width: 768px) {
+
+  .exam-form {
+    margin-top: 5px;
+    padding: 10px;
+    margin-left: 15%;
+    margin-bottom: 15%;
+  }
+
+  .mcq-section {
+
+    overflow-y: scroll;
+  }
+
+  .MCQcontainer,
+  .SUBcontainer {
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 50vh;
+  }
+
+  .import-section {
+    max-width: 100%;
+    margin-top: 1px;
+  }
+
+  .button-group {
+    padding-top: 5px;
+    flex-direction: row;
+  }
+}
+
+/* Modal container */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black with transparency */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  /* Adjust width as needed */
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Modal header */
+.modal-header {
+  padding: 10px 16px;
+  background-color: #0a4570;
+  /* Blue color, adjust as needed */
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.close {
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal body */
+.modal-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Modal footer */
+.modal-footer {
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  text-align: right;
+}
+
+.modal-footer button {
+  margin-left: 8px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #0a4570;
+  /* Blue color, adjust as needed */
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+}
+
+.modal-footer button:hover {
+  background-color: #0a4570;
+  /* Darker shade of blue on hover */
+}
+/* 
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-button {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+
+}
+
+.dropdown-menu.active {
+  display: block;
+
+}
+
+.dropdown-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+ */
+
+ .image-preview {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.remove-button {
+  color: red;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-right: 10px;
+  
+}
+
+.remove-button:hover {
+  color: darkred;
+}

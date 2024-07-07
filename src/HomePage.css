@@ -1,0 +1,117 @@
+/* HomePage.css */
+
+.home-page {
+  background-image: url('./Assets/school.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.content-wrapper {
+  text-align: center;
+  margin: 20px; /* Adjust margin to create space around the content */
+}
+
+.homePage h2{
+  font-size: 3.5rem; /* Font size of the heading */
+  margin-bottom: 2rem; /* Bottom margin for spacing */
+}
+
+.homePage p {
+  font-size: 20px; /* Font size of the paragraph */
+  margin-bottom: 2rem; /* Bottom margin for spacing */
+  color: #b01e1e; /* Text color */
+}
+
+.animate-text {
+  font-size: 1.2rem;
+  margin-bottom: 60px;
+}
+
+.register-button {
+  padding: 15px 20px;
+  background-color:  #0a4570;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+ 
+}
+
+.register-button:hover {
+  background-color: rgb(3, 94, 192)0;
+}
+.home-page {
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
+.animate-text {
+  animation: slideInText 1s ease forwards;
+  opacity: 0;
+}
+@keyframes slideInText {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+}
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1.1em;
+  }
+
+  .register-button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 0px;
+    /* height: 300vh; */
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .register-button {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
+}

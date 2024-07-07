@@ -1,0 +1,35 @@
+/* Login.css */
+.container {
+  width: 300px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  border-color: #0a4570;
+  box-shadow: 0 0 10px rgba(10, 69, 112, 0.5);
+}
+
+.login-btn {
+  background-color: #0a4570;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #074a7a;
+}

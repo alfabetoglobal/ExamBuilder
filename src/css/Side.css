@@ -1,0 +1,136 @@
+/* General Sidebar Styling */
+.siDebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60px;
+  background-color: #286197;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.siDebar.open {
+  width: 200px;
+}
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.logoc {
+  height: 32px;
+  width: 50px;
+  transition: width 0.3s ease, height 0.3s ease;
+  margin-top: 10px;
+}
+
+.logoc-expanded {
+  height: 60px;
+  width: 110px;
+}
+
+/* Menu Items */
+.menu-items {
+  margin-top: 20px;
+}
+
+.menu-item, .menu-item-about {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover, .menu-item-about:hover {
+  background-color: #34495e;
+}
+
+.menu-item svg, .menu-item-about svg {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.menu-item span, .menu-item-about span {
+  font-size: 16px;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+.siDebar.open .menu-item span, .siDebar.open .menu-item-about span {
+  display: inline;
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .siDebar {
+    width: 45px;
+  }
+
+  .siDebar.open {
+    width: 150px;
+  }
+
+  .logoc {
+    width: 45px;
+    height: 30px;
+  }
+
+  .logoc-expanded {
+    width: 70px;
+    height: 40px;
+  }
+
+  .menu-item, .menu-item-about {
+    padding: 8px;
+  }
+
+  .menu-item svg, .menu-item-about svg {
+    font-size: 18px;
+  }
+
+  .menu-item span, .menu-item-about span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .siDebar {
+    width: 40px;
+  }
+
+  .siDebar.open {
+    width: 120px;
+  }
+
+  .logoc {
+    width: 40px;
+    height: 25px;
+  }
+
+  .logoc-expanded {
+    width: 60px;
+    height: 35px;
+  }
+
+  .menu-item, .menu-item-about {
+    padding: 6px;
+  }
+
+  .menu-item svg, .menu-item-about svg {
+    font-size: 16px;
+  }
+
+  .menu-item span, .menu-item-about span {
+    font-size: 12px;
+  }
+}
