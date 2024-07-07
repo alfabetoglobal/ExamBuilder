@@ -34,7 +34,10 @@ const EditDescriptiveQuestion = () => {
             return;
         }
         // Fetch existing question details here if needed
-    }, [questionId, navigate]);
+    }, [questionId, navigate]); 
+
+
+    
 
     const handleOptionChange = (index, event) => {
         const { value } = event.target;
