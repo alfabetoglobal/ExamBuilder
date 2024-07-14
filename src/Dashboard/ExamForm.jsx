@@ -325,21 +325,24 @@ const ExamForm = () => {
       };
 
       let payload;
-
       if (questionType === "MCQ") {
         // Ensure correct answer is in options or answerImages
-        const validAnswer = currentQuestion.options.includes(currentQuestion.correctAnswer) || currentQuestion.optionImages.includes(currentQuestion.correctAnswer);
-        if (!validAnswer) {
+        let correctAnswerIndex;
+        if (currentQuestion.options.includes(currentQuestion.correctAnswer)) {
+          correctAnswerIndex = currentQuestion.options.indexOf(currentQuestion.correctAnswer);
+        } else if (currentQuestion.optionImages.includes(currentQuestion.correctAnswer)) {
+          correctAnswerIndex = currentQuestion.optionImages.indexOf(currentQuestion.correctAnswer);
+        } else {
           toast.warn("Please ensure that the correct answer is one of the options or images.");
           setLoading(false);
           return;
         }
-
+      
         const questionData = {
           question: currentQuestion.question || "",
           questionImageLink: mapImagesToFields("question", updatedImages),
           options: mapImagesToOptions(currentQuestion.options, updatedImages),
-          correctAnswer: currentQuestion.options.indexOf(currentQuestion.correctAnswer) + 1, // Assuming correctAnswer is the actual answer text
+          correctAnswer: correctAnswerIndex + 1, // Adjust for 1-based index
           description: currentQuestion.answerDescription || ""
         };
 
@@ -509,6 +512,7 @@ const ExamForm = () => {
                   <input
                     type="file"
                     id="questionImageUpload"
+                    className="add-question-button"
                     style={{ display: "none" }}
                     accept="image/*"
                     onChange={(e) => handleImageUpload(e.target.files[0], "question")}
@@ -537,6 +541,7 @@ const ExamForm = () => {
                     <input
                       type="file"
                       id={`optionImageUpload${index}`}
+                      className="add-option-button"
                       style={{ display: "none" }}
                       accept="image/*"
                       onChange={(e) => handleImageUpload(e.target.files[0], "option", index)}
@@ -679,6 +684,7 @@ const ExamForm = () => {
                   <input
                     type="file"
                     id="questionImageUpload"
+                    className="add-question-button"
                     style={{ display: "none" }}
                     accept="image/*"
                     onChange={(e) => handleImageUpload(e.target.files[0], "question")}

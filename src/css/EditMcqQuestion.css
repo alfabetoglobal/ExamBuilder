@@ -1,5 +1,5 @@
 /* Main Form Styling */
-.exam-form {
+.edit-exam {
     max-width: 800px;
     margin: 0 auto; /* Center horizontally */
     padding: 20px;
@@ -15,7 +15,7 @@
     flex-direction: column;
 }
 
-.forme-group-question, .option-row {
+.forme-group-questionn, .option-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -31,7 +31,7 @@
 
 }
 
-.upload-button {
+.upload-buttonn {
     margin-left: 30px;
     cursor: pointer;
     padding: 8px;
@@ -44,7 +44,7 @@
     box-sizing: border-box; /* Include padding in the width calculation */
 }
 
-.add-option {
+.add-optionn {
     cursor: pointer;
     padding: 8px;
     background-color: #0a4570;
@@ -54,11 +54,11 @@
     font-size: 14px;
     width: auto; /* Reset width */
 }
-.upload-button:hover, .add-option:hover {
+.upload-buttonn:hover, .add-optionn:hover {
     background-color: #063b5a;
 }
 
-.forme-control {
+.form-control {
     flex: 1;
     width: 188px;
     padding: 10px;
@@ -214,7 +214,7 @@
 }
 
 @media (max-width: 768px) {
-    .exam-form {
+    .edit-exam{
         padding: 15px;
         margin-top: 50px; /* Adjust as needed */
         margin-bottom: 20px; /* Adjust as needed */

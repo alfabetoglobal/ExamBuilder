@@ -13,6 +13,7 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "cors": "^2.8.5",
     "date-fns": "^3.6.0",
     "formik": "^2.4.5",
     "md5": "^2.3.0",

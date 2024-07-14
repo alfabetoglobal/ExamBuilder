@@ -139,6 +139,15 @@ const CreateExam = ({ onStartExam }) => {
     const handleEdit = (exam) => {
         navigate(`/navigation/edit-exam/${exam.quizzId}`, { state: { quiz: exam } });
     };
+    // const handleSetting = (exam) => {
+    //     navigate(`/navigation/exam-time/${exam.quizzId}`);
+    // };
+    const handleSetting = (exam) => {
+        navigate(`/navigation/exam-time/${exam.quizzId}`, { state: { quizId: exam.quizzId }  });
+        // console.log(exam.quizzId);
+    };
+    
+      
     const handleDelete = async (exam) => {
         const confirmDelete = window.confirm('Are you sure you want to delete this quiz?');
         if (!confirmDelete) {
@@ -226,7 +235,7 @@ const CreateExam = ({ onStartExam }) => {
                     />
                 </div>
             </div>
-            <ExamDetailsTable examDetails={examDetails} onView={handleView} onEdit={handleEdit} onDelete={handleDelete} />
+            <ExamDetailsTable examDetails={examDetails} onView={handleView} onEdit={handleEdit} onDelete={handleDelete}  onSetting={handleSetting}/>
             {showTitleModal && (
                 <ExamTitleModal
                     handleTitleSubmit={handleTitleSubmit}
@@ -246,7 +255,7 @@ const CreateExam = ({ onStartExam }) => {
     );
 };
 
-const ExamDetailsTable = ({ examDetails, onView, onEdit, onDelete }) => {
+const ExamDetailsTable = ({ examDetails, onView, onEdit, onDelete , onSetting, onDuration}) => {
     return (
         <div className="table-container">
             <table className="exam-table">
@@ -260,6 +269,7 @@ const ExamDetailsTable = ({ examDetails, onView, onEdit, onDelete }) => {
                         <th>Created At</th>
                         <th>Actions</th>
                         <th>Settings</th>
+                        {/* <th>Duration</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -290,9 +300,12 @@ const ExamDetailsTable = ({ examDetails, onView, onEdit, onDelete }) => {
                                     )}
                                 </td>
                                 <td>
-                                    <button className="setting-button">
+                        
+                                <button  className="setting-button" onClick={() => onSetting(exam)}>
                                         <FontAwesomeIcon icon={faGear} />
                                     </button>
+                                  
+                             
                                 </td>
                             </tr>
                         ))

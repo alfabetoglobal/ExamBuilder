@@ -14,6 +14,7 @@ import Profile from './Dashboard/Profile';
 import AboutUs from './Components/AboutUs';
 import QuizSearch from './Dashboard/QuizSearch';
 import LoginPage from './Dashboard/LoginPage';
+import SetExamTime from './Dashboard/SetExamTime';
 
 
 
@@ -45,6 +46,9 @@ const Navigation = () => {
               <Route path="/about" element={<AboutUs />} />
               <Route path="/QuizSearch" element={<QuizSearch />} />
               <Route path="/LoginPage" element={<LoginPage />} />
+              <Route path="/exam-time/:id" element={<SetExamTime />} />
+              
+              
               
               
             </Routes>

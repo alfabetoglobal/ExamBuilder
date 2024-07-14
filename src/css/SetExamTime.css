@@ -1,0 +1,51 @@
+.dialog-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 150px;
+  }
+  
+  .dialog-box h2 {
+    margin-bottom: 20px;
+    color: #0a4570;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .submit-button {
+    max-width: 20%;
+    display: inline;
+  }
+  
+  .submit-button button {
+    padding: 5px 5px;
+    background-color: #0a4570;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+
+  

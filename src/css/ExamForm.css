@@ -31,14 +31,15 @@
 }
 
 .exam-form {
-  margin: 0 auto;
+  max-width: 800px;
+ /* Center horizontally */
+ margin-left: 100px;
+ margin-top: 50px;
+
   padding: 20px;
-  max-width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -47,20 +48,30 @@
   text-align: center;
 }
 
-.forme-group {
-  margin-bottom: 10px;
-}
+
 
 .forme-group-question {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+
 }
 
 .forme-group-question input[type="text"] {
   flex: 1;
 }
-
+.forme-control{
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+  /* Increase right padding for question text section */
+  padding-right: 50px;
+}
 .forme-group {
   display: flex;
   align-items: center;
@@ -72,8 +83,7 @@
 }
 
 
-.forme-select,
-.forme-control {
+.forme-select {
   width: 100%;
   padding: 7px;
   margin-top: 2px;
@@ -83,35 +93,43 @@
   display: flex;
   justify-content: space-between;
 }
-
-.add-question-button{
-  margin-top: 3px;
-  margin-left: 5zpx;
-  margin-right: 10px;
-  margin-top: 78x;
-/* Add margin-right to create space between buttons */
-  padding: 10px 20px;
+.upload-questionimage, .upload-optionimage {
+  margin-left: 30px;
+  cursor: pointer;
+  padding: 8px;
   background-color: #0a4570;
   color: #fff;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
-}
+  margin-top: 5px;
+  font-size: 14px;
+  /* Set width to 100% for equal width */
+  box-sizing: border-box; 
 
-.add-option-button,
-.upload-button {
-  margin-top: 3px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 78x;
-/* Add margin-right to create space between buttons */
-  padding: 10px 20px;
+}
+.add-question-button,.upload-button{
+  margin-left: 30px;
+  cursor: pointer;
+  padding: 8px;
   background-color: #0a4570;
   color: #fff;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
+  margin-top: 5px;
+  font-size: 14px;
+  /* Set width to 100% for equal width */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
+
+.add-option {
+  cursor: pointer;
+  padding: 8px;
+  background-color: #0a4570;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 5px; /* Adjust spacing */
+  font-size: 14px;
+  width: auto; /* Reset width */
+}
+
 
 .submit-button-container {
   display: flex;
@@ -128,20 +146,6 @@
   cursor: pointer;
 }
 
-/* .remove-button {
-
-  padding: 5px 10px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 5px;
-} */
-
-/* .upload-button{
-  margin-left: 10px;
-} */
 .import-section {
   margin-top: 20px;
   padding: 20px;
@@ -210,10 +214,16 @@
 @media (max-width: 768px) {
 
   .exam-form {
-    margin-top: 5px;
-    padding: 10px;
-    margin-left: 15%;
-    margin-bottom: 15%;
+    max-width: 800px;
+    /* Center horizontally */
+    margin-left: 250px;
+    margin-top: 50px;
+   
+     padding: 20px;
+     background-color: #fff;
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   
   }
 
   .mcq-section {
@@ -239,10 +249,9 @@
   }
 }
 
-/* Modal container */
 .modal {
   display: none;
-  /* Hidden by default */
+
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -251,10 +260,10 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  /* Black with transparency */
+
 }
 
-/* Modal content */
+
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -262,17 +271,14 @@
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
-  /* Adjust width as needed */
+
   border-radius: 8px;
   position: relative;
 }
-
-/* Modal header */
 .modal-header {
   padding: 10px 16px;
   background-color: #0a4570;
-  /* Blue color, adjust as needed */
-  color: white;
+    color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   display: flex;
@@ -299,7 +305,6 @@
   cursor: pointer;
 }
 
-/* Modal body */
 .modal-body {
   padding: 20px;
   text-align: center;
@@ -312,7 +317,6 @@
   text-align: center;
 }
 
-/* Modal footer */
 .modal-footer {
   padding: 10px 16px;
   background-color: #f1f1f1;
@@ -326,7 +330,6 @@
   padding: 8px 16px;
   border: none;
   background-color: #0a4570;
-  /* Blue color, adjust as needed */
   color: white;
   cursor: pointer;
   border-radius: 4px;
@@ -335,45 +338,9 @@
 
 .modal-footer button:hover {
   background-color: #0a4570;
-  /* Darker shade of blue on hover */
-}
-/* 
-.dropdown-container {
-  position: relative;
-}
-
-.dropdown-button {
-  padding: 8px 12px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: none;
 
 }
 
-.dropdown-menu.active {
-  display: block;
-
-}
-
-.dropdown-menu li {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.dropdown-menu li:hover {
-  background-color: #f0f0f0;
-}
- */
 
  .image-preview {
   display: flex;

@@ -229,7 +229,7 @@ const EditMcqQuestion = () => {
     // Inside the return statement of EditMcqQuestion component
     // Inside the return statement of EditMcqQuestion component
     return (
-        <div className="exam-form">
+        <div className="edit-exam">
             {loading && (
                 <div className="loader-overlay">
                     <div className="loader"></div>
@@ -241,7 +241,7 @@ const EditMcqQuestion = () => {
                 <div className="mcq-section">
                     <div className="MCQcontainer">
                         <div className="MCQFORM">
-                            <div className="forme-group-question">
+                            <div className="forme-group-questionn">
                                 <input
                                     type="text"
                                     className="forme-control"
@@ -258,7 +258,7 @@ const EditMcqQuestion = () => {
                                     }
                                 />
                                 <div className="upload-questionimage">
-                                    <label htmlFor="questionImageUpload" className="upload-button">
+                                    <label htmlFor="questionImageUpload" className="upload-buttonn">
                                         Upload Question Image
                                     </label>
                                     <input
@@ -289,7 +289,7 @@ const EditMcqQuestion = () => {
 
                                     {(
                                         <div className="upload-optionimage">
-                                            <label htmlFor={`optionImageUpload${index}`} className="upload-button">
+                                            <label htmlFor={`optionImageUpload${index}`} className="upload-buttonn">
                                                 Upload Option Image
                                             </label>
                                             <input
@@ -318,7 +318,7 @@ const EditMcqQuestion = () => {
                             ))}
                             <div className="add-option-container">
                                 <button
-                                    className="add-option"
+                                    className="add-optionn"
                                     onClick={handleAddOption}
                                     disabled={currentQuestion.options.length >= 4}
                                 >
