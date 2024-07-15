@@ -188,7 +188,7 @@ body {
   border-radius: var(--border-radius);
 }
 .question-palette ul li.saved-and-next {
-  color: green;
+  color: green !important;
 }
 
 

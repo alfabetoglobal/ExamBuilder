@@ -9,7 +9,7 @@ const Test = () => {
   const [questionStates, setQuestionStates] = useState([]);
   const [selectedType, setSelectedType] = useState('mcq');
   const [showWarning, setShowWarning] = useState(false);
-  const [isSaveNextClicked, setIsSaveNextClicked] = useState(false);
+  const [IsSaveNextClicked, setIsSaveNextClicked] = useState(false);
   const applicationNumber = localStorage.getItem('applicationnumber');
   const apiUrl = 'https://ybkfar4y6i.execute-api.us-east-1.amazonaws.com/S1/submitAllstudentquestion'; // Replace with your API URL
 
@@ -394,17 +394,19 @@ const Test = () => {
   <ul>
     {questions.map((question, index) => {
       const state = questionStates[index] || {};
-      let className = 'not-answered'; // Default class for unanswered questions
+      let className; // Default class for unanswered questions
 
-      if (isSaveNextClicked && index === currentQuestion) {
-        className = 'saved-and-next'; // Apply 'saved-and-next' class when Save & Next clicked
-      } else if (state.answered) {
-        className = 'answered';
-      } else if (state.marked) {
-        className = 'marked';
-      } else if (!state.visited) {
-        className = 'not-visited';
-      }
+      if (IsSaveNextClicked && index === currentQuestion) {
+        className = 'saved-and-next';
+       } 
+       // Apply 'saved-and-next' class when Save & Next clicked
+      // } else if (state.answered) {
+      //   className = 'answered';
+      // } else if (state.marked) {
+      //   className = 'marked';
+      // } else if (!state.visited) {
+      //   className = 'not-visited';
+      // }
 
       return (
         <li
