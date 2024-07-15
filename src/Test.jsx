@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Test.css'; // Ensure you have a CSS file to style the component
 import axios from 'axios';
+
 const Test = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -8,8 +9,9 @@ const Test = () => {
   const [questionStates, setQuestionStates] = useState([]);
   const [selectedType, setSelectedType] = useState('mcq');
   const [showWarning, setShowWarning] = useState(false);
-  const applicationNumber=  localStorage.getItem('applicationnumber');
-  const apiUrl = 'https://ybkfar4y6i.execute-api.us-east-1.amazonaws.com/submitmcq'; // Replace with your API URL
+  const [isSaveNextClicked, setIsSaveNextClicked] = useState(false);
+  const applicationNumber = localStorage.getItem('applicationnumber');
+  const apiUrl = 'https://ybkfar4y6i.execute-api.us-east-1.amazonaws.com/S1/submitAllstudentquestion'; // Replace with your API URL
 
   // Load questions from localStorage on component mount
   useEffect(() => {
@@ -49,67 +51,155 @@ const Test = () => {
   useEffect(() => {
     setQuestionStates(Array(questions.length).fill({ visited: false, answered: false, marked: false }));
   }, [questions]);
-
-  // Handle next question
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
-      // Save current question's response before moving to next
-
       const storedItem = JSON.parse(localStorage.getItem(`question-${currentQuestion + 1}`));
-      if (storedItem && storedItem.optionId) {
-        submitQuestion(storedItem.questionId, storedItem.optionId, 'submit')
-          .then(() => {
-            setCurrentQuestion(currentQuestion + 1);
-          })
-          .catch(error => {
-            console.error('Error saving question:', error);
-            // Handle error if needed
-          });
+      if (storedItem && storedItem.optionId !== null) {
+        if (selectedType === 'mcq') {
+          submitQuestion(storedItem.questionId, storedItem.optionId)
+            .then(() => {
+              setIsSaveNextClicked(true); // Set isSaveNextClicked to true after successful submission
+              setCurrentQuestion(currentQuestion + 1);
+       
+            })
+            .catch(error => {
+              console.error('Error saving question:', error);
+            });
+        } else if (selectedType === 'descriptive') {
+          submitDescriptiveAnswer(storedItem.questionId, storedItem.optionDescription)
+            .then(() => {
+              setCurrentQuestion(currentQuestion + 1);
+              setIsSaveNextClicked(true); // Set isSaveNextClicked to true after successful submission
+            })
+            .catch(error => {
+              console.error('Error saving descriptive answer:', error);
+            });
+        }
       } else {
-        setCurrentQuestion(currentQuestion + 1);
+        if (selectedType === 'mcq') {
+          submitQuestion(questions[currentQuestion]._id, null, 'delete')
+            .then(() => {
+              setCurrentQuestion(currentQuestion + 1);
+              setIsSaveNextClicked(true); // Set isSaveNextClicked to true after clearing response
+            })
+            .catch(error => {
+              console.error('Error clearing question response:', error);
+            });
+        } else if (selectedType === 'descriptive') {
+          submitDescriptiveAnswer(questions[currentQuestion]._id, null, 'delete')
+            .then(() => {
+              setCurrentQuestion(currentQuestion + 1);
+              setIsSaveNextClicked(true); // Set isSaveNextClicked to true after clearing response
+            })
+            .catch(error => {
+              console.error('Error clearing descriptive answer:', error);
+            });
+        }
       }
     }
   };
+  
+  // const handleNext = () => {
+  //   if (currentQuestion < questions.length - 1) {
+  //     const storedItem = JSON.parse(localStorage.getItem(`question-${currentQuestion + 1}`));
+  //     if (storedItem && storedItem.optionId !== null) {
+  //       if (selectedType === 'mcq') {
+  //         submitQuestion(storedItem.questionId, storedItem.optionId)
+  //           .then(() => {
+  //             setIsSaveNextClicked(true);
+  //             setCurrentQuestion(currentQuestion + 1);
+  //           })
+  //           .catch(error => {
+  //             console.error('Error saving question:', error);
+  //           });
+  //       } else if (selectedType === 'descriptive') {
+  //         submitDescriptiveAnswer(storedItem.questionId, storedItem.optionDescription)
+  //           .then(() => {
+  //             setCurrentQuestion(currentQuestion + 1);
+  //           })
+  //           .catch(error => {
+  //             console.error('Error saving descriptive answer:', error);
+  //           });
+  //       }
+  //     } else {
+  //       if (selectedType === 'mcq') {
+  //         submitQuestion(questions[currentQuestion]._id, null, 'delete')
+  //           .then(() => {
+  //             setCurrentQuestion(currentQuestion + 1);
+  //           })
+  //           .catch(error => {
+  //             console.error('Error clearing question response:', error);
+  //           });
+  //       } else if (selectedType === 'descriptive') {
+  //         submitDescriptiveAnswer(questions[currentQuestion]._id, null, 'delete')
+  //           .then(() => {
+  //             setCurrentQuestion(currentQuestion + 1);
+  //           })
+  //           .catch(error => {
+  //             console.error('Error clearing descriptive answer:', error);
+  //           });
+  //       }
 
-  // API Call to submit, change, or delete a question
-  const submitQuestion = (questionId, optionId, action) => {
+
+  //     }
+  //   }
+  // };
+
+  // API Call to submit, change, or delete a MCQ question
+  const submitQuestion = (questionId, optionId, action = '') => {
     const payload = {
-      applicationNumber, // Replace with actual application number
+      applicationNumber,
       questionId,
-      optionId,
-      action
+      optionId
     };
     const token = localStorage.getItem('token');
-  
     const headers = {
       headers: {
-        Authorization: token, // Replace with your JWT token
+        Authorization: token,
         'Content-Type': 'application/json'
       }
     };
-  
-    // Determine the action based on the current state
+
     if (!optionId) {
-      // If no option is selected, delete the response if it exists
-      payload.action = 'delete';
-    } else {
-      // If an option is selected, check if it's a new answer or update
-      const storedItem = JSON.parse(localStorage.getItem(`question-${currentQuestion + 1}`));
-      if (storedItem && storedItem.optionId) {
-        payload.action = 'submit'; // Update the existing answer
-      } else {
-        payload.action = 'change'; // Submit a new answer
-      }
+      payload.action = action || 'delete';
     }
 
-    return axios.post(`${apiUrl}/submitStudentQuestion`, payload, headers)
+    return axios.post(`${apiUrl}`, payload, headers)
       .then(response => {
-        console.log('API Response:', response.data);
-        // Handle success response if needed
+        console.log('MCQ API Response:', response.data);
       })
       .catch(error => {
-        console.error('API Error:', error);
-        throw error; // Rethrow error to handle in caller function
+        console.error('MCQ API Error:', error);
+        throw error;
+      });
+  };
+
+  // API Call to submit, change, or delete a descriptive question answer
+  const submitDescriptiveAnswer = (questionId, answer, action = '') => {
+    const payload = {
+      applicationNumber,
+      questionId,
+      answer
+    };
+    const token = localStorage.getItem('token');
+    const headers = {
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json'
+      }
+    };
+
+    if (!answer) {
+      payload.action = action || 'delete';
+    }
+
+    return axios.post(`${apiUrl}`, payload, headers)
+      .then(response => {
+        console.log('Descriptive API Response:', response.data);
+      })
+      .catch(error => {
+        console.error('Descriptive API Error:', error);
+        throw error;
       });
   };
 
@@ -131,12 +221,37 @@ const Test = () => {
 
   // Handle answering MCQ
   const handleAnswer = (optionId, optionDescription) => {
+    const storedItem = JSON.parse(localStorage.getItem(`question-${currentQuestion + 1}`)) || {};
+    const questionId = questions[currentQuestion]._id;
+
+    if (selectedType === 'mcq') {
+      const mcqArray = JSON.parse(localStorage.getItem('mcqArray')) || [];
+      const existingIndex = mcqArray.findIndex(item => item.questionId === questionId);
+      if (existingIndex !== -1) {
+        mcqArray[existingIndex].optionId = optionId;
+      } else {
+        mcqArray.push({ questionId, optionId });
+      }
+      localStorage.setItem('mcqArray', JSON.stringify(mcqArray));
+    } else if (selectedType === 'descriptive') {
+      console.log(localStorage.setItem('descriptiveArray'));
+      const descriptiveArray = JSON.parse(localStorage.getItem('descriptiveArray')) || [];
+      const existingIndex = descriptiveArray.findIndex(item => item.questionId === questionId);
+      if (existingIndex !== -1) {
+        descriptiveArray[existingIndex].answer = optionDescription;
+      } else {
+        descriptiveArray.push({ questionId, answer: optionDescription });
+      }
+      localStorage.setItem('descriptiveArray', JSON.stringify(descriptiveArray));
+    }
+
     setQuestionStates(prevState => {
       const newState = [...prevState];
       newState[currentQuestion].answered = true;
       return newState;
     });
-    localStorage.setItem(`question-${currentQuestion + 1}`, JSON.stringify({ questionId: questions[currentQuestion]._id, optionId, optionDescription }));
+
+    localStorage.setItem(`question-${currentQuestion + 1}`, JSON.stringify({ questionId, optionId, optionDescription }));
   };
 
   // Clear answer for the current question
@@ -147,7 +262,18 @@ const Test = () => {
       newState[currentQuestion].marked = false;
       return newState;
     });
+
     localStorage.removeItem(`question-${currentQuestion + 1}`);
+
+    if (selectedType === 'mcq') {
+      const mcqArray = JSON.parse(localStorage.getItem('mcqArray')) || [];
+      const updatedMcqArray = mcqArray.filter(item => item.questionId !== questions[currentQuestion]._id);
+      localStorage.setItem('mcqArray', JSON.stringify(updatedMcqArray));
+    } else if (selectedType === 'descriptive') {
+      const descriptiveArray = JSON.parse(localStorage.getItem('descriptiveArray')) || [];
+      const updatedDescriptiveArray = descriptiveArray.filter(item => item.questionId !== questions[currentQuestion]._id);
+      localStorage.setItem('descriptiveArray', JSON.stringify(updatedDescriptiveArray));
+    }
   };
 
   // Handle switch between MCQ and descriptive questions
@@ -167,7 +293,6 @@ const Test = () => {
     alert('Your answers have been submitted.');
     // Additional submit logic can be added here
   };
-
   // Render options for MCQ questions
   const renderMCQOptions = question => {
     const storedItem = JSON.parse(localStorage.getItem(`question-${currentQuestion + 1}`)) || {};
@@ -264,32 +389,38 @@ const Test = () => {
             </ul>
           </div>
           <div className="question-palette">
-            <ul>
-              {questions.map((question, index) => {
-                const state = questionStates[index] || {};
-                let className = 'not-answered'; // Default class for unanswered questions
+    
+          <div className="question-palette">
+  <ul>
+    {questions.map((question, index) => {
+      const state = questionStates[index] || {};
+      let className = 'not-answered'; // Default class for unanswered questions
 
-                if (index === currentQuestion) {
-                  className = 'selected';
-                } else if (state.answered) {
-                  className = 'answered';
-                } else if (state.marked) {
-                  className = 'marked';
-                } else if (!state.visited) {
-                  className = 'not-visited';
-                }
+      if (isSaveNextClicked && index === currentQuestion) {
+        className = 'saved-and-next'; // Apply 'saved-and-next' class when Save & Next clicked
+      } else if (state.answered) {
+        className = 'answered';
+      } else if (state.marked) {
+        className = 'marked';
+      } else if (!state.visited) {
+        className = 'not-visited';
+      }
 
-                return (
-                  <li
-                    key={question._id}
-                    className={className}
-                    onClick={() => setCurrentQuestion(index)}
-                  >
-                    {index + 1}
-                  </li>
-                );
-              })}
-            </ul>
+      return (
+        <li
+          key={question._id}
+          className={className}
+          onClick={() => setCurrentQuestion(index)}
+        >
+          {index + 1}
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+
+
           </div>
           <div className="button-container">
             <div className="actions">
