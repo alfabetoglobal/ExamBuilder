@@ -15,6 +15,7 @@ const Quiz = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        
         const fetchQuizDetails = async () => {
             setLoading(true);
             const token = localStorage.getItem('token');
@@ -64,6 +65,7 @@ const Quiz = () => {
     }, [id]);
 
     const handleEditMcqQuestion = (question) => {
+     
         navigate(`/navigation/mcq/${question.mcqQuestion_id}`, { state: { question } });
     };
 
@@ -141,6 +143,8 @@ const Quiz = () => {
         return <div>No quiz details available</div>;
     }
 
+    
+
     return (
         <div className="container-quiz">
             <ToastContainer />
@@ -180,37 +184,40 @@ const Quiz = () => {
                                         <div className="card-body">
                                             <h5 className="question-mcq">Question {index + 1}</h5>
                                             <p><strong>Question:</strong> {question.question}</p>
-                                            {question.questionImageLink && (
+                                            {/* {question.questionImageLink && (
                                                 <div className="image-container">
                                                     <img src={question.questionImageLink} alt={`Question ${index + 1}`} className="question-image" />
                                                 </div>
-                                            )}
+                                            )} */}
                                             <div className="options-container">
                                                 <h5>Options:</h5>
-                                                {question.options.map((option, optionIndex) => (
-                                                    <div key={option._id} className="option-row">
-                                                        <span>
-                                                            {option.answer}
-                                                            {option.answerImageLink && (
-                                                                <div className="image-container">
-                                                                    <img src={option.answerImageLink} alt={`Option ${optionIndex + 1}`} className="option-image" />
-                                                                </div>
-                                                            )}
-                                                        </span>
-                                                    </div>
-                                                ))}
+                                                <ol>
+                                                    {question.options.map((option, optionIndex) => (
+                                                        <li key={option._id} className="option-row">
+                                                            <span>
+                                                                {option.answer}
+                                           {/* {option.answerImageLink && (
+                                               <div className="image-container">
+                                                <img src={option.answerImageLink} alt={`Option ${optionIndex + 1}`} className="option-image" />
+                                              </div>
+                                            )} */}
+                                                    </span>
+                                                    </li>
+                                                    ))}
+                                                </ol>
                                             </div>
+
                                             {/* <p><strong>Description:</strong> {question.description}</p> */}
 
                                             <p><strong>Description:</strong> {question.answerDescription}</p>
                                             <p>
                                                 <strong>Correct Answer:</strong>{' '}
                                                 {question.options.find(option => option._id === question.correctAnswer)?.answer}
-                                                {question.options.find(option => option._id === question.correctAnswer)?.answerImageLink && (
+                                                {/* {question.options.find(option => option._id === question.correctAnswer)?.answerImageLink && (
                                                     <div className="image-container">
                                                         <img src={question.options.find(option => option._id === question.correctAnswer)?.answerImageLink} alt="Correct Answer" className="correct-answer-image" />
                                                     </div>
-                                                )}
+                                                )} */}
                                             </p>
                                         </div>
                                     </div>
@@ -240,9 +247,9 @@ const Quiz = () => {
                                             <h5 className="question-des">Question {index + 1}</h5>
 
                                             <p><strong>Question:</strong> {question.question}</p>
-                                            {question.questionImageLink && (
+                                            {/* {question.questionImageLink && (
                                                 <img src={question.questionImageLink} alt={`Question ${index + 1}`} className="question-image" />
-                                            )}
+                                            )} */}
 
                                             <p><strong>Description:</strong> {question.answer}</p>
                                             {question.marks && <p><strong>Marks:</strong> {question.marks}</p>}

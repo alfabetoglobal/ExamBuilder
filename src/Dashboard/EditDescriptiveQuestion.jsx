@@ -255,7 +255,7 @@ const EditDescriptiveQuestion = () => {
                                         })
                                     }
                                 />
-                                <div className="upload-questionimage">
+                                {/* <div className="upload-questionimage">
                                     <label htmlFor="questionImageUpload" className="upload-button">
                                         Upload Question Image
                                     </label>
@@ -271,7 +271,7 @@ const EditDescriptiveQuestion = () => {
                                             }
                                         }}
                                     />
-                                </div>
+                                </div> */}
                             </div>
 
                 

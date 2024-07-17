@@ -213,12 +213,28 @@
 .options-container {
   margin-top: 20px;
 }
+.options-container {
+  margin-top: 20px;
+}
 
-.option-row {
+.option-list {
+ /* Ensures ordered list numbers are visible */
+  padding-left: 20px; /* Adds some padding to the left for visibility */
+}
+
+.option-item {
+  margin-bottom: 10px; /* Adds some space between list items */
+}
+
+.option-item span {
+  font-size: 16px; /* Adjust font size if necessary */
+}
+
+.li .option-row {
   display: left;
   align-items: center;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 15px;
 }
 .correct-answer-image{
     max-width: 200px;
