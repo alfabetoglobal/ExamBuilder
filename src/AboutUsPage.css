@@ -1,0 +1,138 @@
+/* General Styles for About Us Page */
+.about-us-page {
+    padding: 50px;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Centered Content Styling */
+.about-us-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Heading Styles */
+.about-us-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 6%;
+    color: #0a4570;
+    text-shadow: 0 0px 10px white;
+}
+
+/* Floating Sections Styling */
+.floating-sections {
+    background: linear-gradient(145deg, #e9e9e9, #95d2ff);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 50px; /* Added padding to ensure content is visible before image */
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #0a4570;
+    position: relative;
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+    backdrop-filter: blur(5px);
+    text-align: left;
+}
+
+.section h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #0a4570;
+    text-shadow: 0 0 5px #0a4570;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.btn-about {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #0a4570;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-about:hover {
+    background-color: #084b7e;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-us-content h2 {
+        font-size: 2em;
+        margin-bottom: 4%;
+    }
+
+    .floating-sections {
+        padding-bottom: 30px; /* Reduce padding for smaller screens */
+    }
+
+    .section {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+
+    .section h3 {
+        font-size: 1.8em;
+    }
+
+    .btn-about {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us-content h2 {
+        font-size: 1.5em;
+        margin-bottom: 3%;
+    }
+
+    .floating-sections {
+        padding-bottom: 20px; /* Further reduce padding for very small screens */
+    }
+
+    .section {
+        padding: 10px;
+        font-size: 0.8em;
+    }
+
+    .section h3 {
+        font-size: 1.5em;
+    }
+
+    .btn-about {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+}
+
+/* Keyframes for floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}

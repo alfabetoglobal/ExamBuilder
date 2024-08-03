@@ -1,0 +1,145 @@
+/* General Footer Styles */
+.footer {
+  background-color: #0a4570; /* Dark blue background */
+  color: #ffffff; /* White text */
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  animation: fadeIn 1s ease-in;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Align sections properly */
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.footer-info strong{
+  margin-left: 10px;
+}
+
+/* Move "Get In Touch" section further down */
+.footer-info {
+  margin-top: 26px; /* Add margin to move it down */
+}
+
+/* Heading Styling */
+.footer-heading {
+  color: #ffffff; /* White for headings */
+  margin-bottom: 15px; /* Gap between heading and content */
+  font-size: 1.5rem;
+  border-bottom: 2px solid #a0c4ff; /* Light blue underline for emphasis */
+  padding-bottom: 5px; /* Padding for heading underline */
+}
+.emailfooter{
+color: #0386e4;
+}
+
+/* Links Styling */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 70px;
+}
+
+.footer-links ul li {
+  margin-bottom: 15px; /* Increased gap between items */
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+.footer-links ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  margin-left: 10px;
+  align-items: center; /* Align icon and text */
+}
+
+.footer-links ul li a:hover {
+  color: #a0c4ff; /* Light blue on hover */
+}
+
+.footer-links i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Newsletter Form Styles */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 65px;
+}
+
+.newsletter-form label {
+  margin-top: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.newsletter-form input {
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccddee; /* Light blue border */
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.newsletter-form button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  background-color: #003c71; /* Slightly darker blue */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.newsletter-form button:hover {
+  background-color: #002b50; /* Even darker blue on hover */
+}
+
+/* Footer Bottom Styles */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #cccccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

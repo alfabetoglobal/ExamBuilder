@@ -1,0 +1,193 @@
+/* General Page Styles */
+.help-page {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff; /* White background */
+  animation: fadeIn 1s ease-in;
+}
+
+/* Header Styles */
+.help-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.help-header h1 {
+  color: #0a4570; /* Dark blue */
+  font-size: 2rem; /* Increased font size for larger screens */
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #0a4570;
+}
+
+/* Section Styles */
+.help-intro,
+.help-content,
+.knowledge-base,
+.contact-support {
+  margin-bottom: 30px;
+  animation: slideIn 0.8s ease-out;
+}
+
+.section-heading {
+  color: #003c71; /* Medium blue */
+  margin-bottom: 15px;
+  font-size: 1.5rem; /* Adjust font size */
+}
+
+.section-text {
+  color: #000000; /* Black for text */
+  line-height: 1.8;
+  font-size: 1rem; /* Adjust font size */
+}
+
+/* Link Styles */
+.section-text a {
+  color: #0066cc; /* Bright blue */
+  text-decoration: none;
+}
+
+.section-text a:hover {
+  text-decoration: underline;
+  color: #004c99; /* Change color on hover */
+}
+
+/* Feedback Section Styles */
+.feedback {
+  display: flex;
+  flex-direction: column; /* Ensure elements stack vertically */
+  align-items: center;
+  margin-top: 30px;
+}
+
+.feedback-heading {
+  font-size: 1.5rem;
+  color: #0a4570; /* Dark blue */
+  margin-bottom: 20px; /* Space between heading and form */
+}
+
+.feedback-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background: #f0f7ff; /* Light blue background */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  transition: transform 0.3s;
+}
+
+/* Feedback Form Styles */
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-form label {
+  margin-top: 10px;
+  color: #0a4570; /* Medium blue */
+  font-weight: bold;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccddee; /* Light blue border */
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.feedback-form button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  background-color: #0a4570; /* Darker blue */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Footer Styles */
+.help-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+  color: #004c99; /* Lighter blue */
+}
+
+.footer-text {
+  color: #000000; /* Black for footer text */
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .help-header h1 {
+    font-size: 1.5rem; /* Adjust font size */
+  }
+
+  .feedback-card {
+    padding: 15px;
+  }
+
+  .section-heading {
+    font-size: 1.25rem; /* Adjust font size */
+  }
+
+  .section-text {
+    font-size: 0.9rem; /* Adjust font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-card {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .section-heading {
+    font-size: 1.2rem; /* Adjust font size */
+  }
+
+  .section-text {
+    font-size: 0.8rem; /* Adjust font size */
+  }
+}
